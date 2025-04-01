@@ -28,7 +28,7 @@
         }
 
         input[type=number]{
-            -moz-appearance: textfield;
+            -moz-win-appearance: textfield;
         }
 
         .custom-bg{
