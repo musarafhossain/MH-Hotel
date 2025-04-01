@@ -20,6 +20,37 @@
         .h-font{
             font-family: "Merienda", sans-serif;
         }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button{
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number]{
+            -moz-appearance: textfield;
+        }
+
+        .custom-bg{
+            background-color: #2ec1ac;
+        }
+        
+        .custom-bg:hover{
+            background-color: #279e8c;
+        }
+
+        .availability-form{
+            margin-top: -50px;
+            z-index: 2;
+            position: relative;
+        }
+
+        @media screen and (max-width: 575px) {
+            .availability-form{
+                margin-top: 25px;
+                padding: 0 35px;
+            }
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -61,6 +92,76 @@
         </div>
     </nav>
 
+    <!-- Swiper -->
+    <div class="container-fluid px-lg-4 mt-4">    
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="./images/carousel/image-1.png" class="w-100 d-block"/>
+                </div>
+                <div class="swiper-slide">
+                    <img src="./images/carousel/image-2.png" class="w-100 d-block"/>
+                </div>
+                <div class="swiper-slide">
+                    <img src="./images/carousel/image-3.png" class="w-100 d-block"/>
+                </div>
+                <div class="swiper-slide">
+                    <img src="./images/carousel/image-4.png" class="w-100 d-block"/>
+                </div>
+                <div class="swiper-slide">
+                    <img src="./images/carousel/image-5.png" class="w-100 d-block"/>
+                </div>
+                <div class="swiper-slide">
+                    <img src="./images/carousel/image-6.png" class="w-100 d-block"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Check Availability Form -->
+    <div class="container availability-form">
+        <div class="row">
+            <div class="col-lg-12 bg-white shadow p-4 rounded">
+                <h5 class="mb-4">Check Booking Availibility</h5>
+                <form action="#">
+                    <div class="row align-items-end">
+                        <div class="col-lg-3 mb-3">
+                            <label for="check-in" class="form-label" style="font-weight: 500;">Check-in</label>
+                            <input type="date" class="form-control shadow-none" id="check-in">
+                        </div>
+                        <div class="col-lg-3 mb-3">
+                            <label for="check-out" class="form-label" style="font-weight: 500;">Check-out</label>
+                            <input type="date" class="form-control shadow-none" id="check-out">
+                        </div>
+                        <div class="col-lg-3 mb-3">
+                            <label for="adults" class="form-label">Adults</label>
+                            <select class="form-select shadow-none" id="adults">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 mb-3">
+                            <label for="children" class="form-label">Children</label>
+                            <select class="form-select shadow-none" id="children">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1 mt-2 mb-lg-3">
+                            <button type="submit" class="btn custom-bg text-white shadow-none">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br>
+        
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -155,32 +256,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Swiper -->
-    <div class="container-fluid px-lg-4 mt-4">    
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-1.png" class="w-100 d-block"/>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-2.png" class="w-100 d-block"/>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-3.png" class="w-100 d-block"/>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-4.png" class="w-100 d-block"/>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-5.png" class="w-100 d-block"/>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-6.png" class="w-100 d-block"/>
-                </div>
             </div>
         </div>
     </div>
