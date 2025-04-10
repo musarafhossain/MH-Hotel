@@ -51,11 +51,21 @@
                 padding: 0 35px;
             }
         }
+
+        .fade-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20%; 
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); 
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="bg-light">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light bg-white px-3 py-2 px-lg-3 py-lg-2 shadow-sm static-top"
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light bg-white px-3 py-2 px-lg-3 py-lg-2 shadow-lg static-top"
         <div class="container-fluid">
             <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">MH Hotel</a>
             <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,26 +103,32 @@
     </nav>
 
     <!-- Swiper -->
-    <div class="container-fluid px-lg-4 mt-4">    
+    <div class="">    
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-1.png" class="w-100 d-block"/>
+                <div class="swiper-slide position-relative">
+                    <img src="./images/carousel/image-1.png" class="w-100 d-block" />
+                    <div class="fade-bottom"></div>
                 </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-2.png" class="w-100 d-block"/>
+                <div class="swiper-slide position-relative">
+                    <img src="./images/carousel/image-2.png" class="w-100 d-block" />
+                    <div class="fade-bottom"></div>
                 </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-3.png" class="w-100 d-block"/>
+                <div class="swiper-slide position-relative">
+                    <img src="./images/carousel/image-3.png" class="w-100 d-block" />
+                    <div class="fade-bottom"></div>
                 </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-4.png" class="w-100 d-block"/>
+                <div class="swiper-slide position-relative">
+                    <img src="./images/carousel/image-4.png" class="w-100 d-block" />
+                    <div class="fade-bottom"></div>
                 </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-5.png" class="w-100 d-block"/>
+                <div class="swiper-slide position-relative">
+                    <img src="./images/carousel/image-5.png" class="w-100 d-block" />
+                    <div class="fade-bottom"></div>
                 </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/image-6.png" class="w-100 d-block"/>
+                <div class="swiper-slide position-relative">
+                    <img src="./images/carousel/image-6.png" class="w-100 d-block" />
+                    <div class="fade-bottom"></div>
                 </div>
             </div>
         </div>
@@ -213,10 +229,10 @@
                             <i class="bi bi-star-fill text-secondary"></i>
                         </span>
                       </div>
-                      <div class="mb-2 col-lg-12">
-                        <a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 col-lg-6">>>> Book Now</a>
-                        <a href="#" class="btn btn-sm btn-outline-dark shadow-none col-lg-5 py-2">More details</a>
-                      </div>
+                      <div class="mb-2 col-lg-12 d-flex gap-2">
+                        <a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 flex-fill">>>> Book Now</a>
+                        <a href="#" class="btn btn-sm btn-outline-dark shadow-none py-2 flex-fill">More details</a>
+                      </div>                      
                     </div>
                 </div>
             </div>
@@ -269,10 +285,10 @@
                             <i class="bi bi-star-fill text-secondary"></i>
                         </span>
                       </div>
-                      <div class="mb-2 col-lg-12">
-                        <a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 col-lg-6">>>> Book Now</a>
-                        <a href="#" class="btn btn-sm btn-outline-dark shadow-none col-lg-5 py-2">More details</a>
-                      </div>
+                      <div class="mb-2 col-lg-12 d-flex gap-2">
+                        <a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 flex-fill">>>> Book Now</a>
+                        <a href="#" class="btn btn-sm btn-outline-dark shadow-none py-2 flex-fill">More details</a>
+                      </div>   
                     </div>
                 </div>
             </div>
@@ -325,15 +341,15 @@
                             <i class="bi bi-star-fill text-secondary"></i>
                         </span>
                       </div>
-                      <div class="mb-2 col-lg-12">
-                        <a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 col-lg-6">>>> Book Now</a>
-                        <a href="#" class="btn btn-sm btn-outline-dark shadow-none col-lg-5 py-2">More details</a>
-                      </div>
+                      <div class="mb-2 col-lg-12 d-flex gap-2">
+                        <a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 flex-fill">>>> Book Now</a>
+                        <a href="#" class="btn btn-sm btn-outline-dark shadow-none py-2 flex-fill">More details</a>
+                      </div>   
                     </div>
                 </div>
             </div>
             <div class="col-lg-12 text-center mt-lg-5 mt-3">
-                <a href="# " class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none py-2">More Rooms >>></a>
+                <a href="# " class="btn btn-sm btn-outline-dark fw-bold shadow-none py-2">More Rooms >>></a>
             </div>
         </div>
     </div>
