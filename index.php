@@ -481,11 +481,11 @@
     <h2 class="mt-5 pt-4 mb-5 text-center fw-bold h-font">REACH US</h2>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded">
+            <div class="col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded border">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235850.8127278619!2d88.18219205572203!3d22.5353430840448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f882db4908f667%3A0x43e330e68f6c2cbc!2sKolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1744302371153!5m2!1sen!2sin" height="320" class="w-100 rounded" loading="lazy" ></iframe>
             </div>
             <div class="col-lg-4 col-md-4">
-                <div class="bg-white p-4 rounded mb-4">
+                <div class="bg-white p-4 rounded mb-4 border">
                     <h5>Call Us</h5>
                     <a href="tel:+919998887771" class="d-inline-block mb-2 text-decoration-none text-dark">
                         <i class="bi bi-telephone-fill"></i>
@@ -497,23 +497,23 @@
                         +91-9998887771
                     </a>
                 </div>
-                <div class="bg-white p-4 rounded mb-4 gap-2">
+                <div class="bg-white p-4 rounded mb-4 gap-2 border">
                     <h5>Follow Us</h5>
                     <div class="d-flex gap-2">
                         <a href="#" class="d-inline-block mb-2 text-decoration-none text-dark">
-                            <i class="bi bi-facebook text-primary fs-1"></i>
+                            <i class="bi bi-facebook text-primary fs-3"></i>
                         </a>
                         <a href="#" class="d-inline-block mb-2 text-decoration-none">
-                            <i class="bi bi-instagram text-danger fs-1"></i>
+                            <i class="bi bi-instagram text-danger fs-3"></i>
                         </a>
                         <a href="#" class="d-inline-block mb-2 text-decoration-none text-info">
-                            <i class="bi bi-twitter text-primary fs-1"></i>
+                            <i class="bi bi-twitter text-primary fs-3"></i>
                         </a>
                         <a href="#" class="d-inline-block mb-2 text-decoration-none">
-                            <i class="bi bi-youtube text-danger fs-1"></i>
+                            <i class="bi bi-youtube text-danger fs-3"></i>
                         </a>
                         <a href="#" class="d-inline-block mb-2 text-decoration-none">
-                            <i class="bi bi-linkedin text-primary fs-1"></i>
+                            <i class="bi bi-linkedin text-primary fs-3"></i>
                         </a>
                     </div>
                 </div>
@@ -521,7 +521,77 @@
         </div>
     </div>
 
-    <br><br><br><br><br><br>
+    <!--Footer-->
+    <footer class="container-fluid bg-white mt-5">
+        <div class="row col-lg-12">
+            <div class="col-lg-3 p-4">
+                <h3 class="h-font fw-bold fs-3 mb-2">TJ HOTEL</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore suscipit itaque at vero consectetur? Minus!</p>
+            </div>
+            <div class="col-lg-3 p-4">
+                <h5 class="mb-3">Links</h5>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    Home
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    Rooms
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    Facilities
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    Contact Us
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    About
+                </a>
+            </div>
+            <div class="col-lg-3 p-4">
+                <h5 class="mb-3">Follow Us</h5>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    <i class="bi bi-facebook"></i>
+                    Facebook
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    <i class="bi bi-twitter"></i>
+                    Twitter
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    <i class="bi bi-instagram"></i>
+                    Instagram
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    <i class="bi bi-linkedin"></i>
+                    Linkedin
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    <i class="bi bi-youtube"></i>
+                    Youtube
+                </a><br>
+            </div>
+            <div class="col-lg-3 p-4">
+                <h5 class="mb-3">Others</h5>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    Go to
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    Finder
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    Glocose
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    Category
+                </a><br>
+                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">
+                    About
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <h6 class="text-center bg-dark text-white p-3 m-0">Designed and Developed by MH Hotel</h6>
+        </div>
+    </footer>
 
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
