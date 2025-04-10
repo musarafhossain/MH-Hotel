@@ -20,12 +20,14 @@
     <!-- Navbar -->
     <?php require_once('./include/header.php'); ?>
 
+    <!--Heading-->
     <div class="my-5 px-4">
         <h2 class="fw-bold h-font text-center">OUR FACILITIES</h2>
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Deleniti voluptatum totam et eum rem consectetur? Hic labore ipsum alias odio?</p>
     </div>
     
+    <!--Facilities Section-->
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-5 px-4">
