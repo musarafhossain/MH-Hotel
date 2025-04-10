@@ -10,12 +10,6 @@
     <!-- Common Links -->
     <?php require_once('./include/links.php'); ?>
     <style>
-        .navbar.sticky {
-            position: sticky;
-            background-color: #fff !important;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
         .availability-form {
             margin-top: -50px;
             z-index: 2;
@@ -341,7 +335,7 @@
                     <h5 class="mt-3">Massage</h5>
                 </div>
                 <div class="col-lg-12 text-center mt-lg-5 mt-3">
-                    <a href="# " class="btn btn-sm btn-outline-dark fw-bold shadow-none py-2">More Facilities >>></a>
+                    <a href="facilities.php" class="btn btn-sm btn-outline-dark fw-bold shadow-none py-2">More Facilities >>></a>
                 </div>
             </div>
         </div>

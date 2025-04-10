@@ -28,3 +28,15 @@ input[type=number]{
 .custom-bg:hover{
     background-color: var(--teal_hover);
 }
+
+.navbar.sticky {
+    position: sticky;
+    background-color: #fff !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.h-line{
+    width: 150px;
+    margin: 0 auto;
+    height: 1.7px;
+}
