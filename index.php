@@ -12,33 +12,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Swiper JS Style Link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Common CSS Link -->
+    <link rel="stylesheet" href="./css/common.css">
     <style>
-        *{
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .h-font{
-            font-family: "Merienda", sans-serif;
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button{
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        input[type=number]{
-            -moz-win-appearance: textfield;
-        }
-
-        .custom-bg{
-            background-color: #2ec1ac;
-        }
-        
-        .custom-bg:hover{
-            background-color: #279e8c;
-        }
-
         .availability-form{
             margin-top: -50px;
             z-index: 2;
@@ -60,6 +36,13 @@
             height: 20%; 
             background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); 
             pointer-events: none;
+        }
+
+        .facilities-bg{
+            background-color: #e5e5f7;
+            opacity: 0.8;
+            background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+            background-size: 10px 10px;
         }
     </style>
 </head>
@@ -350,6 +333,38 @@
             </div>
             <div class="col-lg-12 text-center mt-lg-5 mt-3">
                 <a href="# " class="btn btn-sm btn-outline-dark fw-bold shadow-none py-2">More Rooms >>></a>
+            </div>
+        </div>
+    </div>
+
+    <!--Our Falilities-->
+    <div class="facilities-bg pb-4">
+        <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">OUR FACILITIES</h2>
+        <div class="container">
+            <div class="row justify-content-evenly px-lg-0 p-md-0 px-5 gap-2">
+                <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                    <img src="./images/facilities/wifi.svg" alt="" srcset="" width="80px">
+                    <h5 class="mt-3">Wifi</h5>
+                </div>
+                <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                    <img src="./images/facilities/tv.svg" alt="" srcset="" width="80px">
+                    <h5 class="mt-3">TV</h5>
+                </div>
+                <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                    <img src="./images/facilities/ac.svg" alt="" srcset="" width="80px">
+                    <h5 class="mt-3">AC</h5>
+                </div>
+                <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                    <img src="./images/facilities/heater.svg" alt="" srcset="" width="80px">
+                    <h5 class="mt-3">Heater</h5>
+                </div>
+                <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                    <img src="./images/facilities/massage.svg" alt="" srcset="" width="80px">
+                    <h5 class="mt-3">Massage</h5>
+                </div>
+                <div class="col-lg-12 text-center mt-lg-5 mt-3">
+                    <a href="# " class="btn btn-sm btn-outline-dark fw-bold shadow-none py-2">More Facilities >>></a>
+                </div>
             </div>
         </div>
     </div>
