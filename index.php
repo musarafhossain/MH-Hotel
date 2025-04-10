@@ -4,20 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MH - Hotel</title>
-    <!-- Bootstrap Style Link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Google Font (Merienda[300-900], Poppins[400, 500, 600]) -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Poppins:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <!-- Bootstrap Icon Link -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>MH Hotel - Home</title>
     <!-- Swiper JS Style Link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- Common CSS Link -->
-    <link rel="stylesheet" href="./css/common.css">
+    <!-- Common Links -->
+    <?php require_once('./include/links.php'); ?>
     <style>
         .navbar.sticky {
             position: sticky;
@@ -485,10 +476,8 @@
     <!--Footer-->
     <?php require_once('./include/footer.php'); ?>
 
-    <!-- Bootstrap Script Link -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <!--Include Common Scripts-->
+    <?php require_once('./include/scripts.php'); ?>
     <!-- Swiper JS Script Link -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
