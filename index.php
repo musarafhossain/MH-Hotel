@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/common.css">
     <style>
         .navbar.sticky {
-            position: fixed;
+            position: sticky;
             background-color: #fff !important;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -67,7 +67,7 @@
 
 <body class="bg-light">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light px-3 py-2 px-lg-3 py-lg-2 w-100 top-0 z-3 fade-top">
+    <nav class="navbar navbar-expand-lg navbar-light px-3 py-2 px-lg-3 py-lg-2 w-100 top-0 z-3 sticky">
         <div class="container-fluid">
             <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">MH Hotel</a>
             <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
@@ -95,11 +95,11 @@
                 </ul>
                 <div class="d-flex" role="search">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-danger shadow-none me-lg-3 me-2" data-bs-toggle="modal"
                         data-bs-target="#loginModal">
                         Login
                     </button>
-                    <button type="button" class="btn btn-outline-dark shadow-none" data-bs-toggle="modal"
+                    <button type="button" class="btn btn-success shadow-none" data-bs-toggle="modal"
                         data-bs-target="#registerModal">
                         Register
                     </button>
@@ -400,7 +400,7 @@
     <div class="container">
         <div class="swiper swiper-testimonials">
             <div class="swiper-wrapper mb-5">
-                <div class="swiper-slide bg-white p-4">
+                <div class="swiper-slide bg-white p-4 border">
                     <div class="profile d-flex align-items-center mb-3">
                         <img src="./images/facilities/wifi.svg" width="30px">
                         <h6 class="m-0 ms-2">Jhon Doe</h6>
@@ -412,7 +412,7 @@
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
                 </div>
-                <div class="swiper-slide bg-white p-4">
+                <div class="swiper-slide bg-white p-4 border">
                     <div class="profile d-flex align-items-center mb-3">
                         <img src="./images/facilities/wifi.svg" width="30px">
                         <h6 class="m-0 ms-2">Jhon Doe</h6>
@@ -424,7 +424,43 @@
                         <i class="bi bi-star-fill text-warning"></i>
                     </div>
                 </div>
-                <div class="swiper-slide bg-white p-4">
+                <div class="swiper-slide bg-white p-4 border">
+                    <div class="profile d-flex align-items-center mb-3">
+                        <img src="./images/facilities/wifi.svg" width="30px">
+                        <h6 class="m-0 ms-2">Jhon Doe</h6>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, voluptatem?</p>
+                    <div class="rating">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-white p-4 border">
+                    <div class="profile d-flex align-items-center mb-3">
+                        <img src="./images/facilities/wifi.svg" width="30px">
+                        <h6 class="m-0 ms-2">Jhon Doe</h6>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, voluptatem?</p>
+                    <div class="rating">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-white p-4 border">
+                    <div class="profile d-flex align-items-center mb-3">
+                        <img src="./images/facilities/wifi.svg" width="30px">
+                        <h6 class="m-0 ms-2">Jhon Doe</h6>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, voluptatem?</p>
+                    <div class="rating">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-white p-4 border">
                     <div class="profile d-flex align-items-center mb-3">
                         <img src="./images/facilities/wifi.svg" width="30px">
                         <h6 class="m-0 ms-2">Jhon Doe</h6>
@@ -577,11 +613,11 @@
 
         var swiperTestimonials = new Swiper(".swiper-testimonials", {
             effect: "coverflow",
+            loop: true,
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: "auto",
             slidesPerView: "3",
-            loop: 1,
             coverflowEffect: {
                 rotate: 50,
                 stretch: 0,
@@ -606,19 +642,6 @@
                     slidesPerView: 3,
                 },
             },
-        });
-    </script>
-
-    <!-- Sticky Navbar Script -->
-    <script>
-        const navbar = document.querySelector('.navbar');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('sticky');
-            } else {
-                navbar.classList.remove('sticky');
-            }
         });
     </script>
 
