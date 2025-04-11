@@ -472,24 +472,29 @@
                         <i class="bi bi-telephone-fill"></i>
                         +91-9998887771
                     </a>
+                    <h5 class="mt-4">Email</h5>
+                    <a href="mailto:mhhotelofficial@gmail.com" class="d-flex gap-2 mb-2 text-decoration-none text-dark">
+                        <i class="bi bi-envelope-fill"></i>
+                        mhhotelofficial@gmail.com
+                    </a>
                 </div>
                 <div class="bg-white p-4 rounded mb-4 gap-2 border">
                     <h5>Follow Us</h5>
                     <div class="d-flex gap-2">
                         <a href="#" class="d-inline-block mb-2 text-decoration-none text-dark">
-                            <i class="bi bi-facebook text-primary fs-3"></i>
+                            <i class="bi bi-facebook text-dark fs-5"></i>
                         </a>
                         <a href="#" class="d-inline-block mb-2 text-decoration-none">
-                            <i class="bi bi-instagram text-danger fs-3"></i>
+                            <i class="bi bi-instagram text-dark fs-5"></i>
                         </a>
                         <a href="#" class="d-inline-block mb-2 text-decoration-none text-info">
-                            <i class="bi bi-twitter text-primary fs-3"></i>
+                            <i class="bi bi-twitter text-dark fs-5"></i>
                         </a>
                         <a href="#" class="d-inline-block mb-2 text-decoration-none">
-                            <i class="bi bi-youtube text-danger fs-3"></i>
+                            <i class="bi bi-youtube text-dark fs-5"></i>
                         </a>
                         <a href="#" class="d-inline-block mb-2 text-decoration-none">
-                            <i class="bi bi-linkedin text-primary fs-3"></i>
+                            <i class="bi bi-linkedin text-dark fs-5"></i>
                         </a>
                     </div>
                 </div>
