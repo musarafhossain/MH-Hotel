@@ -136,8 +136,8 @@
                 <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
                     <img src="./images/rooms/1.jpg" class="card-img-top">
                     <div class="card-body">
-                        <h5>Simple Room Name</h5>
-                        <h6 class="">₹200 per night</h6>
+                        <h6>Simple Room Name</h6>
+                        <h5 class="">₹200 per night</h5>
                         <hr class="my-2">
                         <div class="features">
                             <h6 class="mb-1">Features</h6>
@@ -152,6 +152,16 @@
                             </span>
                             <span class="badge rounded-pill text-bg-light text-dark text-wrap">
                                 3 Sofa
+                            </span>
+                        </div>
+                        <hr class="my-2">
+                        <div class="features">
+                            <h6 class="mb-1">Guests</h6>
+                            <span class="badge rounded-pill text-bg-light text-dark text-wrap">
+                                5 Adults
+                            </span>
+                            <span class="badge rounded-pill text-bg-light text-dark text-wrap">
+                                3 Childrens
                             </span>
                         </div>
                         <hr class="my-2">
@@ -193,8 +203,8 @@
                 <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
                     <img src="./images/rooms/1.jpg" class="card-img-top">
                     <div class="card-body">
-                        <h5>Simple Room Name</h5>
-                        <h6 class="">₹200 per night</h6>
+                        <h6>Simple Room Name</h6>
+                        <h5 class="">₹200 per night</h5>
                         <hr class="my-2">
                         <div class="features">
                             <h6 class="mb-1">Features</h6>
@@ -209,6 +219,16 @@
                             </span>
                             <span class="badge rounded-pill text-bg-light text-dark text-wrap">
                                 3 Sofa
+                            </span>
+                        </div>
+                        <hr class="my-2">
+                        <div class="features">
+                            <h6 class="mb-1">Guests</h6>
+                            <span class="badge rounded-pill text-bg-light text-dark text-wrap">
+                                5 Adults
+                            </span>
+                            <span class="badge rounded-pill text-bg-light text-dark text-wrap">
+                                3 Childrens
                             </span>
                         </div>
                         <hr class="my-2">
@@ -250,8 +270,8 @@
                 <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
                     <img src="./images/rooms/1.jpg" class="card-img-top">
                     <div class="card-body">
-                        <h5>Simple Room Name</h5>
-                        <h6 class="">₹200 per night</h6>
+                        <h6>Simple Room Name</h6>
+                        <h5 class="">₹200 per night</h5>
                         <hr class="my-2">
                         <div class="features">
                             <h6 class="mb-1">Features</h6>
@@ -266,6 +286,16 @@
                             </span>
                             <span class="badge rounded-pill text-bg-light text-dark text-wrap">
                                 3 Sofa
+                            </span>
+                        </div>
+                        <hr class="my-2">
+                        <div class="features">
+                            <h6 class="mb-1">Guests</h6>
+                            <span class="badge rounded-pill text-bg-light text-dark text-wrap">
+                                5 Adults
+                            </span>
+                            <span class="badge rounded-pill text-bg-light text-dark text-wrap">
+                                3 Childrens
                             </span>
                         </div>
                         <hr class="my-2">
