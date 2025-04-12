@@ -47,6 +47,19 @@
             background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
             background-size: 10px 10px;
         }
+
+        .hero-header{
+            position: absolute;
+            z-index: 10;
+            font-weight: 900;
+            color: #fff;
+            font-size: 8em;
+            text-align: center;
+            top: 50%;
+            translate: 0 -50%;
+            width: 100%;
+            stroke: #444cf7;
+        }
     </style>
 </head>
 
@@ -82,6 +95,7 @@
                     <img src="./images/carousel/image-6.png" class="w-100 d-block" />
                     <div class="fade-bottom"></div>
                 </div>
+                <!-- <h1 class="hero-header">UNLOCK YOUR <br>ULTIMATE STAY</h1> -->
             </div>
         </div>
     </div>
@@ -334,7 +348,7 @@
                 </div>
             </div>
             <div class="col-lg-12 text-center mt-lg-5 mt-3">
-                <a href="# " class="btn btn-sm btn-outline-dark fw-bold shadow-none py-2">More Rooms >>></a>
+                <a href="rooms.php" class="btn btn-sm btn-outline-dark fw-bold shadow-none py-2">More Rooms >>></a>
             </div>
         </div>
     </div>
@@ -461,7 +475,7 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235850.8127278619!2d88.18219205572203!3d22.5353430840448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f882db4908f667%3A0x43e330e68f6c2cbc!2sKolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1744302371153!5m2!1sen!2sin" height="320" class="w-100 rounded" loading="lazy" ></iframe>
             </div>
             <div class="col-lg-4 col-md-4">
-                <div class="bg-white p-4 rounded mb-4 border">
+                <div class="bg-white p-4 rounded mb-2 border">
                     <h5>Call Us</h5>
                     <a href="tel:+919998887771" class="d-inline-block mb-2 text-decoration-none text-dark">
                         <i class="bi bi-telephone-fill"></i>
