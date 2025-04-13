@@ -43,6 +43,6 @@
         if(!(isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)){
             redirect('index.php');
         }
-        session_regenerate_id(true);
+        //session_regenerate_id(true);
     }
 ?>

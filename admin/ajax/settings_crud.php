@@ -40,4 +40,16 @@
             echo json_encode(['error' => 'No data found']);
         }
     }
+
+    if (isset($_POST['get_contacts'])) {
+        $query = "SELECT * FROM `contact_details` WHERE `sl_no` = ?";
+        $values = [1];
+        $res = select($query, $values, "i");
+
+        if ($res && $row = mysqli_fetch_assoc($res)) {
+            echo json_encode($row);
+        } else {
+            echo json_encode(['error' => 'No data found']);
+        }
+    }
 ?>

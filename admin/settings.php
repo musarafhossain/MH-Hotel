@@ -68,6 +68,92 @@
                         </p>
                     </div>
                 </div>
+
+                <!-- Contact details section -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">Contact Settings</h5>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-dark shadow-none btn-sm gap-2 d-flex"
+                                data-bs-toggle="modal" data-bs-target="#contact-s">
+                                <i class="bi bi-pencil-square"></i>
+                                Edit
+                            </button>
+                        </div>
+
+                        <div class="row g-3">
+                            <!-- Left Column -->
+                            <div class="col-lg-6">
+                                <div class="border p-4 rounded mb-3">
+                                    <h6 class="fw-bold mb-2">Address</h6>
+                                    <hr>
+                                    <address class="mb-0">
+                                        <i class="bi bi-geo-alt-fill text-dark me-1"></i>
+                                        <span id="address"></span>
+                                    </address>
+                                </div>
+                                <div class="border p-4 rounded mb-3">
+                                    <h6 class="fw-bold mb-2">Google Map</h6>
+                                    <hr>
+                                    <div class="mb-0">
+                                        <i class="bi bi-geo-fill text-dark me-1"></i>
+                                        <span id="gmap"></span>
+                                    </div>
+                                </div>
+                                <div class="border p-4 rounded mb-3">
+                                    <h6 class="fw-bold mb-2">Phone Numbers</h6>
+                                    <hr>
+                                    <div class="mb-0">
+                                        <i class="bi bi-telephone-fill text-dark me-1"></i>
+                                        <span id="phone"></span>
+                                    </div>
+                                </div>
+                                <div class="border p-4 rounded">
+                                    <h6 class="fw-bold mb-2">E-mail</h6>
+                                    <hr>
+                                    <div class="mb-0">
+                                        <i class="bi bi-envelope-fill text-dark me-1"></i>
+                                        <span id="email"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="col-lg-6">
+                                <div class="border p-4 rounded mb-3">
+                                    <h6 class="fw-bold mb-2">Social Links</h6>
+                                    <hr>
+                                    <div class="mb-1">
+                                        <i class="bi bi-facebook text-dark me-1"></i>
+                                        <span id="facebook"></span>
+                                    </div>
+                                    <div class="mb-1">
+                                        <i class="bi bi-instagram text-dark me-1"></i>
+                                        <span id="instagram"></span>
+                                    </div>
+                                    <div class="mb-1">
+                                        <i class="bi bi-twitter text-dark me-1"></i>
+                                        <span id="twitter"></span>
+                                    </div>
+                                    <div class="mb-1">
+                                        <i class="bi bi-linkedin text-dark me-1"></i>
+                                        <span id="linkedin"></span>
+                                    </div>
+                                    <div class="mb-1">
+                                        <i class="bi bi-youtube text-dark me-1"></i>
+                                        <span id="youtube"></span>
+                                    </div>
+                                </div>
+                                <div class="border p-4 rounded">
+                                    <h6 class="fw-bold mb-2">Iframe</h6>
+                                    <hr>
+                                    <iframe class="mb-0 w-100" id="iframe" loading="lazy" ></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -104,11 +190,44 @@
             </div>
         </div>
 
+        <!-- Contact Settings Modal -->
+        <div class="modal fade" id="contact-s" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Contact Settings</h1>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="site_title_input" class="form-label fw-bold">Site Title</label>
+                                <input type="text" class="form-control shadow-none" id="site_title_input">
+                            </div>
+                            <div class="mb-3">
+                                <label for="site_about_input" class="form-label fw-bold">About us</label>
+                                <textarea class="form-control shadow-none" id="site_about_input" rows="6"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn text-secondary shadow-none border" data-bs-dismiss="modal"
+                                onclick="reset_general_form()">
+                                CANCEL
+                            </button>
+                            <button type="button" class="btn custom-bg text-white shadow-none"
+                                onclick="update_general()">
+                                SUBMIT
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!--Include Common Scripts-->
         <?php require_once('./include/scripts.php'); ?>
 
         <script>
-            let general_data;
+            let general_data, contacts_data;
 
             function get_general() {
                 let site_title = document.getElementById('site_title');
@@ -196,8 +315,31 @@
                 xhr.send('update_shutdown=' + value);
             }
 
+            function get_contacts() {
+                let contacts_p_id = ['address', 'gmap', 'phone', 'email', 'facebook', 'instagram', 'twitter', 'linkedin', 'youtube'];
+                let iframe = document.getElementById('iframe');
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "ajax/settings_crud.php", true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.onload = function () {
+                    contacts_data = JSON.parse(this.responseText);
+                    contacts_data = Object.values(contacts_data);
+
+                    for (let i = 0; i < contacts_p_id.length; i++) {
+                        document.getElementById(contacts_p_id[i]).innerText = contacts_data[i+1];
+                    }
+                    console.log(contacts_data[10])
+                    iframe.src = contacts_data[10];
+                }
+
+                xhr.send('get_contacts');
+            }
+
             window.onload = function () {
                 get_general();
+                get_contacts();
             }
         </script>
 </body>
