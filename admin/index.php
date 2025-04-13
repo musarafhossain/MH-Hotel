@@ -61,10 +61,10 @@
                 //session_start();
                 $_SESSION['adminLogin'] = true;
                 $_SESSION['adminId'] = $row['sl_no'];
-                alert('success', 'Login Successful!');
+                toast('success', 'Login Successful!');
                 redirect('dashboard.php');
             } else {
-                alert('danger', 'Login Failed - Invalid Credentials!');
+                toast('danger', 'Login Failed - Invalid Credentials!');
             }
         }
     ?>
