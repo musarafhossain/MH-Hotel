@@ -81,11 +81,11 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="site_title_input" class="form-label">Site Title</label>
+                                <label for="site_title_input" class="form-label fw-bold">Site Title</label>
                                 <input type="text" class="form-control shadow-none" id="site_title_input">
                             </div>
                             <div class="mb-3">
-                                <label for="site_about_input" class="form-label">About us</label>
+                                <label for="site_about_input" class="form-label fw-bold">About us</label>
                                 <textarea class="form-control shadow-none" id="site_about_input" rows="6"></textarea>
                             </div>
                         </div>
@@ -146,6 +146,13 @@
             function update_general() {
                 let site_title_value = document.getElementById('site_title_input').value.trim();
                 let site_about_value = document.getElementById('site_about_input').value.trim();
+
+                // Check if any field is empty
+                if (site_title_value === '' || site_about_value === '') {
+                    showToast('danger', 'All fields are required!');
+                    return;
+                }
+
                 let xhr = new XMLHttpRequest();
                 xhr.open("POST", "ajax/settings_crud.php", true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
