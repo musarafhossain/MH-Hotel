@@ -13,9 +13,15 @@
     <?php require_once('./include/links.php'); ?>
 </head>
 <body class="bg-white">
-    <div class="container-fluid bg-dark text-light p-3 d-flex align-items-center justify-content-between">
-        <h3 class="mb-0">ADMIN PANEL</h3>
-        <a href="logout.php" class="btn btn-danger btn-sm">LOGOUT</a>
+    <!--Include Header-->
+    <?php require_once('./include/header.php'); ?>
+
+    <div class="container-fluid" id="main-content">
+        <div class="row">
+            <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+                <h1>Dashboard Page</h1>
+            </div>
+        </div>
     </div>
 
     <!--Include Common Scripts-->

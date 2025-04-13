@@ -1,7 +1,7 @@
 <footer class="container-fluid bg-white mt-5">
     <div class="row col-lg-12">
         <div class="col-lg-3 p-4">
-            <h3 class="h-font fw-bold fs-3 mb-2">TJ HOTEL</h3>
+            <h3 class="h-font fw-bold fs-3 mb-2">MH HOTEL</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore suscipit itaque at vero consectetur?
                 Minus!</p>
         </div>
