@@ -1,3 +1,8 @@
+<?php
+ include_once('admin/db/db_config.php');
+ include_once('admin/include/essentials.php');
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light px-3 py-2 px-lg-3 py-lg-2 w-100 top-0 z-3 sticky">
     <div class="container-fluid">
         <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">MH Hotel</a>

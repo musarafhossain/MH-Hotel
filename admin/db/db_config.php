@@ -17,12 +17,13 @@
 
     function filteration($data){
         foreach ($data as $key => $value) {
-            $data[$value] = trim($value);
-            $data[$value] = stripslashes($value);
-            $data[$value] = htmlspecialchars($value);
-            $data[$value] = strip_tags($value);
-            return $data;
+            $value = trim($value);
+            $value = stripslashes($value);
+            $value = htmlspecialchars($value);
+            $value = strip_tags($value);
+            $data[$value] = $value;
         }
+        return $data;
     }
 
     function select($sql, $values, $datatypes){
