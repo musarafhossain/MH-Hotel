@@ -154,6 +154,26 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Management Team Section -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">Management Team Settings</h5>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-dark shadow-none btn-sm gap-2 d-flex"
+                                data-bs-toggle="modal" data-bs-target="#team-s">
+                                <i class="bi bi-plus-square"></i>
+                                Add
+                            </button>
+                        </div>
+                        <div class="border p-4 rounded">
+                            <h6 class="card-subtitle mb-1 fw-bold">Site Title</h6>
+                            <hr>
+                            <p class="card-text" id="site_title"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -268,6 +288,39 @@
                             CANCEL
                         </button>
                         <button type="button" class="btn custom-bg text-white shadow-none" onclick="update_contacts()">
+                            SUBMIT
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Team Management Modal -->
+    <div class="modal fade" id="team-s" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Team Member</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="memeber_name_input" class="form-label fw-bold">Name</label>
+                            <input type="text" class="form-control shadow-none" id="memeber_name_input">
+                        </div>
+                        <div class="mb-3">
+                            <label for="site_about_input" class="form-label fw-bold">Member Picture</label>
+                            <input type="file" accept=".jpg, .png, .jpeg, .webp" class="form-control shadow-none"
+                                id="memeber_picture_input">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn text-secondary shadow-none border" data-bs-dismiss="modal"
+                            onclick="reset_general_form()">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn custom-bg text-white shadow-none" onclick="update_general()">
                             SUBMIT
                         </button>
                     </div>
@@ -391,33 +444,45 @@
         }
 
         function update_contacts() {
-            let contacts_p_id = ['address', 'gmap', 'phone', 'email', 'facebook', 'instagram', 'twitter', 'linkedin', 'youtube', 'iframe'];
-            let contacts_input_id = ['address_input', 'gmap_input', 'phone_input', 'email_input', 'facebook_input', 'instagram_input', 'twitter_input', 'linkedin_input', 'youtube_input', 'iframe_input'];
-            let data_str = "";
+            const contacts_p_id = ['address', 'gmap', 'phone', 'email', 'facebook', 'instagram', 'twitter', 'linkedin', 'youtube', 'iframe'];
+            const contacts_input_id = ['address_input', 'gmap_input', 'phone_input', 'email_input', 'facebook_input', 'instagram_input', 'twitter_input', 'linkedin_input', 'youtube_input', 'iframe_input'];
 
+            const data = new URLSearchParams();
+
+            // Validate each contact input
             for (let i = 0; i < contacts_input_id.length; i++) {
-                data_str += contacts_p_id[i]+"="+document.getElementById(contacts_input_id[i]).value+"&";
-            }
-            data_str += "update_contacts";
+                const inputElement = document.getElementById(contacts_input_id[i]);
+                const value = inputElement?.value.trim() || "";
 
-            let xhr = new XMLHttpRequest();
+                if (value === "") {
+                    showToast('danger', `All fields are required!`);
+                    inputElement?.focus();
+                    return;
+                }
+
+                data.append(contacts_p_id[i], value);
+            }
+
+            data.append("update_contacts", "1");
+
+            const xhr = new XMLHttpRequest();
             xhr.open("POST", "ajax/settings_crud.php", true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
             xhr.onload = function () {
-                var myModal = document.getElementById("contact-s");
-                var modal = bootstrap.Modal.getInstance(myModal);
-                modal.hide();
+                const myModal = document.getElementById("contact-s");
+                const modal = bootstrap.Modal.getInstance(myModal);
+                modal?.hide();
 
-                if (this.responseText == 1) {
+                if (this.responseText.trim() === "1") {
                     showToast('success', "Changes Saved!");
                     get_contacts();
                 } else {
                     showToast('warning', "No Changes Made!");
                 }
-            }
+            };
 
-            xhr.send(data_str);
+            xhr.send(data.toString());
         }
 
         function reset_contacts_form() {
