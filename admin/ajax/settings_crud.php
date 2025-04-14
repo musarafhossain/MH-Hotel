@@ -91,9 +91,16 @@
 
         while ($row = mysqli_fetch_assoc($res)) {
             echo <<<data
+                <style>
+                    .team-img {
+                        height: 200px;        
+                        object-fit: cover;    
+                        width: 100%;         
+                    }
+                </style>
                 <div class="col-md-2 mb-3">
                     <div class="card bg-dark text-white">
-                        <img src="$path$row[picture]" class="card-img" alt="...">
+                        <img src="$path$row[picture]" class="card-img team-img w-100" alt="...">
                         <div class="card-img-overlay text-end">
                             <button type="button" onclick="delete_member($row[sl_no])" class="btn btn-danger btn-sm shadow-none">
                                 <i class="bi bi-trash me-1"></i>
