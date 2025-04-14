@@ -4,7 +4,7 @@
 </div>
 
 <div class="col-lg-2 container-fluid bg-dark border-top border-3 border-secondary" id="dashboard-menu">
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav id="admin-nav-bar" class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid flex-lg-column d-flex">
             <h4 class="mt-3 text-light">ADMIN PANEL</h4>
             <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"

@@ -5,7 +5,7 @@
 <!-- AOS Link -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-<!-- Initialize AOS and Manage Nav Links Tag -->
+<!-- Initialize AOS and Manage Nav Links Active -->
 <script>
   AOS.init();
 
