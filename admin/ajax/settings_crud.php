@@ -52,4 +52,17 @@
             echo json_encode(['error' => 'No data found']);
         }
     }
+
+    if (isset($_POST['update_contacts'])) {
+        $frm_data = filteration($_POST);
+        $query = "UPDATE `contact_details` SET `address`=?,`gmap`=?,`phone`=?,`email`=?,`facebook`=?,`instagram`=?,`twitter`=?,`linkedin`=?,`youtube`=?,`iframe`=? WHERE `sl_no`=?";
+        $values = [$frm_data['address'], $frm_data['gmap'], $frm_data['phone'], $frm_data['email'], $frm_data['facebook'], $frm_data['instagram'], $frm_data['twitter'], $frm_data['linkedin'], $frm_data['youtube'], $frm_data['iframe'], 1];
+        $res = update($query, $values, "ssssssssssi");
+
+        if ($res) {
+            echo $res;
+        } else {
+            echo json_encode(['error' => 'No data found']);
+        }
+    }
 ?>

@@ -148,7 +148,7 @@
                                 <div class="border p-4 rounded">
                                     <h6 class="fw-bold mb-2">Iframe</h6>
                                     <hr>
-                                    <iframe class="mb-0 w-100" id="iframe" loading="lazy" ></iframe>
+                                    <iframe class="mb-0 w-100" id="iframe" loading="lazy"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -156,192 +156,285 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- General Settings Modal -->
-        <div class="modal fade" id="general-s" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <form>
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">General Settings</h1>
+    <!-- General Settings Modal -->
+    <div class="modal fade" id="general-s" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">General Settings</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="site_title_input" class="form-label fw-bold">Site Title</label>
+                            <input type="text" class="form-control shadow-none" id="site_title_input">
                         </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="site_title_input" class="form-label fw-bold">Site Title</label>
-                                <input type="text" class="form-control shadow-none" id="site_title_input">
-                            </div>
-                            <div class="mb-3">
-                                <label for="site_about_input" class="form-label fw-bold">About us</label>
-                                <textarea class="form-control shadow-none" id="site_about_input" rows="6"></textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn text-secondary shadow-none border" data-bs-dismiss="modal"
-                                onclick="reset_general_form()">
-                                CANCEL
-                            </button>
-                            <button type="button" class="btn custom-bg text-white shadow-none"
-                                onclick="update_general()">
-                                SUBMIT
-                            </button>
+                        <div class="mb-3">
+                            <label for="site_about_input" class="form-label fw-bold">About us</label>
+                            <textarea class="form-control shadow-none" id="site_about_input" rows="6"></textarea>
                         </div>
                     </div>
-                </form>
-            </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn text-secondary shadow-none border" data-bs-dismiss="modal"
+                            onclick="reset_general_form()">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn custom-bg text-white shadow-none" onclick="update_general()">
+                            SUBMIT
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <!-- Contact Settings Modal -->
-        <div class="modal fade" id="contact-s" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <form>
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Contact Settings</h1>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="site_title_input" class="form-label fw-bold">Site Title</label>
-                                <input type="text" class="form-control shadow-none" id="site_title_input">
+    <!-- Contact Settings Modal -->
+    <div class="modal fade" id="contact-s" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <form>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Contact Settings</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="address_input" class="form-label fw-bold">Address</label>
+                                        <input type="text" class="form-control shadow-none" id="address_input">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gmap_input" class="form-label fw-bold">Google Map Link</label>
+                                        <input type="text" class="form-control shadow-none" id="gmap_input">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone_input" class="form-label fw-bold">Phone Number
+                                            (+91)</label>
+                                        <input type="text" class="form-control shadow-none" id="phone_input">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email_input" class="form-label fw-bold">Email</label>
+                                        <input type="email" class="form-control shadow-none" id="email_input">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="iframe_input" class="form-label fw-bold">Iframe</label>
+                                        <input type="text" class="form-control shadow-none" id="iframe_input">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="phone_input" class="form-label fw-bold">Social Links</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-facebook text-dark me-1"></i>
+                                            </span>
+                                            <input type="text" class="form-control shadow-none" id="facebook_input">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-instagram text-dark me-1"></i>
+                                            </span>
+                                            <input type="text" class="form-control shadow-none" id="instagram_input">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-twitter text-dark me-1"></i>
+                                            </span>
+                                            <input type="text" class="form-control shadow-none" id="twitter_input">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-linkedin text-dark me-1"></i>
+                                            </span>
+                                            <input type="text" class="form-control shadow-none" id="linkedin_input">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-youtube text-dark me-1"></i>
+                                            </span>
+                                            <input type="text" class="form-control shadow-none" id="youtube_input">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="site_about_input" class="form-label fw-bold">About us</label>
-                                <textarea class="form-control shadow-none" id="site_about_input" rows="6"></textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn text-secondary shadow-none border" data-bs-dismiss="modal"
-                                onclick="reset_general_form()">
-                                CANCEL
-                            </button>
-                            <button type="button" class="btn custom-bg text-white shadow-none"
-                                onclick="update_general()">
-                                SUBMIT
-                            </button>
                         </div>
                     </div>
-                </form>
-            </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn text-secondary shadow-none border" data-bs-dismiss="modal"
+                            onclick="reset_contacts_form()">
+                            CANCEL
+                        </button>
+                        <button type="button" class="btn custom-bg text-white shadow-none" onclick="update_contacts()">
+                            SUBMIT
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <!--Include Common Scripts-->
-        <?php require_once('./include/scripts.php'); ?>
+    <!--Include Common Scripts-->
+    <?php require_once('./include/scripts.php'); ?>
 
-        <script>
-            let general_data, contacts_data;
+    <script>
+        let general_data, contacts_data;
 
-            function get_general() {
-                let site_title = document.getElementById('site_title');
-                let site_about = document.getElementById('site_about');
-                let site_title_input = document.getElementById('site_title_input');
-                let site_about_input = document.getElementById('site_about_input');
+        function get_general() {
+            let site_title = document.getElementById('site_title');
+            let site_about = document.getElementById('site_about');
+            let site_title_input = document.getElementById('site_title_input');
+            let site_about_input = document.getElementById('site_about_input');
 
-                let shutdown_toggle = document.getElementById("shutdown_toggle");
+            let shutdown_toggle = document.getElementById("shutdown_toggle");
 
-                let xhr = new XMLHttpRequest();
-                xhr.open("POST", "ajax/settings_crud.php", true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-                xhr.onload = function () {
-                    general_data = JSON.parse(this.responseText);
+            xhr.onload = function () {
+                general_data = JSON.parse(this.responseText);
 
-                    site_title.innerText = general_data.site_title;
-                    site_about.innerText = general_data.site_about;
+                site_title.innerText = general_data.site_title;
+                site_about.innerText = general_data.site_about;
 
-                    site_title_input.value = general_data.site_title;
-                    site_about_input.value = general_data.site_about;
+                site_title_input.value = general_data.site_title;
+                site_about_input.value = general_data.site_about;
 
-                    if (general_data.shutdown == 0) {
-                        shutdown_toggle.checked = false;
-                        shutdown_toggle.value = 0;
-                    } else {
-                        shutdown_toggle.checked = true;
-                        shutdown_toggle.value = 1;
-                    }
+                if (general_data.shutdown == 0) {
+                    shutdown_toggle.checked = false;
+                    shutdown_toggle.value = 0;
+                } else {
+                    shutdown_toggle.checked = true;
+                    shutdown_toggle.value = 1;
                 }
-
-                xhr.send('get_general');
             }
 
-            function update_general() {
-                let site_title_value = document.getElementById('site_title_input').value.trim();
-                let site_about_value = document.getElementById('site_about_input').value.trim();
+            xhr.send('get_general');
+        }
 
-                // Check if any field is empty
-                if (site_title_value === '' || site_about_value === '') {
-                    showToast('danger', 'All fields are required!');
-                    return;
-                }
+        function update_general() {
+            let site_title_value = document.getElementById('site_title_input').value.trim();
+            let site_about_value = document.getElementById('site_about_input').value.trim();
 
-                let xhr = new XMLHttpRequest();
-                xhr.open("POST", "ajax/settings_crud.php", true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-                xhr.onload = function () {
-                    var myModal = document.getElementById("general-s");
-                    var modal = bootstrap.Modal.getInstance(myModal);
-                    modal.hide();
-
-                    if (this.responseText == 1) {
-                        showToast('success', "Changes Saved!");
-                        get_general();
-                    } else {
-                        showToast('warning', "No Changes Made!");
-                    }
-                }
-
-                xhr.send('site_title=' + site_title_value + '&site_about=' + site_about_value + '&update_general');
+            // Check if any field is empty
+            if (site_title_value === '' || site_about_value === '') {
+                showToast('danger', 'All fields are required!');
+                return;
             }
 
-            function reset_general_form() {
-                document.getElementById('site_title_input').value = general_data.site_title;
-                document.getElementById('site_about_input').value = general_data.site_about;
-            }
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-            function update_shutdown(value) {
-                let xhr = new XMLHttpRequest();
-                xhr.open("POST", "ajax/settings_crud.php", true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+                var myModal = document.getElementById("general-s");
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
 
-                xhr.onload = function () {
-
-                    if (this.responseText == 1 && general_data.shutdown == 0) {
-                        showToast('success', "Site has been shutdown!");
-                    } else {
-                        showToast('success', "Shutdown mode off!");
-                    }
+                if (this.responseText == 1) {
+                    showToast('success', "Changes Saved!");
                     get_general();
+                } else {
+                    showToast('warning', "No Changes Made!");
                 }
-
-                xhr.send('update_shutdown=' + value);
             }
 
-            function get_contacts() {
-                let contacts_p_id = ['address', 'gmap', 'phone', 'email', 'facebook', 'instagram', 'twitter', 'linkedin', 'youtube'];
-                let iframe = document.getElementById('iframe');
+            xhr.send('site_title=' + site_title_value + '&site_about=' + site_about_value + '&update_general');
+        }
 
-                let xhr = new XMLHttpRequest();
-                xhr.open("POST", "ajax/settings_crud.php", true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        function reset_general_form() {
+            document.getElementById('site_title_input').value = general_data.site_title;
+            document.getElementById('site_about_input').value = general_data.site_about;
+        }
 
-                xhr.onload = function () {
-                    contacts_data = JSON.parse(this.responseText);
-                    contacts_data = Object.values(contacts_data);
+        function update_shutdown(value) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-                    for (let i = 0; i < contacts_p_id.length; i++) {
-                        document.getElementById(contacts_p_id[i]).innerText = contacts_data[i+1];
-                    }
-                    console.log(contacts_data[10])
-                    iframe.src = contacts_data[10];
+            xhr.onload = function () {
+
+                if (this.responseText == 1 && general_data.shutdown == 0) {
+                    showToast('success', "Site has been shutdown!");
+                } else {
+                    showToast('success', "Shutdown mode off!");
                 }
-
-                xhr.send('get_contacts');
-            }
-
-            window.onload = function () {
                 get_general();
-                get_contacts();
             }
-        </script>
+
+            xhr.send('update_shutdown=' + value);
+        }
+
+        function get_contacts() {
+            let contacts_p_id = ['address', 'gmap', 'phone', 'email', 'facebook', 'instagram', 'twitter', 'linkedin', 'youtube'];
+            let iframe = document.getElementById('iframe');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                contacts_data = JSON.parse(this.responseText);
+                contacts_data = Object.values(contacts_data);
+
+                for (let i = 0; i < contacts_p_id.length; i++) {
+                    document.getElementById(contacts_p_id[i]).innerText = contacts_data[i + 1];
+                }
+                iframe.src = contacts_data[10];
+                reset_contacts_form();
+            }
+
+            xhr.send('get_contacts');
+        }
+
+        function update_contacts() {
+            let contacts_p_id = ['address', 'gmap', 'phone', 'email', 'facebook', 'instagram', 'twitter', 'linkedin', 'youtube', 'iframe'];
+            let contacts_input_id = ['address_input', 'gmap_input', 'phone_input', 'email_input', 'facebook_input', 'instagram_input', 'twitter_input', 'linkedin_input', 'youtube_input', 'iframe_input'];
+            let data_str = "";
+
+            for (let i = 0; i < contacts_input_id.length; i++) {
+                data_str += contacts_p_id[i]+"="+document.getElementById(contacts_input_id[i]).value+"&";
+            }
+            data_str += "update_contacts";
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                var myModal = document.getElementById("contact-s");
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                if (this.responseText == 1) {
+                    showToast('success', "Changes Saved!");
+                    get_contacts();
+                } else {
+                    showToast('warning', "No Changes Made!");
+                }
+            }
+
+            xhr.send(data_str);
+        }
+
+        function reset_contacts_form() {
+            let contacts_input_id = ['address_input', 'gmap_input', 'phone_input', 'email_input', 'facebook_input', 'instagram_input', 'twitter_input', 'linkedin_input', 'youtube_input'];
+            let iframe_input = document.getElementById('iframe_input');
+
+            for (let i = 0; i < contacts_input_id.length; i++) {
+                document.getElementById(contacts_input_id[i]).value = contacts_data[i + 1];
+            }
+            iframe_input.value = contacts_data[10];
+        }
+
+        window.onload = function () {
+            get_general();
+            get_contacts();
+        }
+    </script>
 </body>
 
 </html>
