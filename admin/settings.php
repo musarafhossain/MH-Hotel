@@ -170,7 +170,7 @@
                         <div class="border p-4 rounded">
                             <h6 class="card-subtitle mb-1 fw-bold">Site Title</h6>
                             <hr>
-                            <p class="card-text" id="site_title"></p>
+                            <p class="card-text" id="site_title"><?php $UPLOAD_IMAGE_PATH ?></p>
                         </div>
                     </div>
                 </div>
@@ -306,22 +306,22 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="memeber_name_input" class="form-label fw-bold">Name</label>
-                            <input type="text" class="form-control shadow-none" id="memeber_name_input">
+                            <label for="member_name_input" class="form-label fw-bold">Name</label>
+                            <input type="text" class="form-control shadow-none" id="member_name_input">
                         </div>
                         <div class="mb-3">
-                            <label for="site_about_input" class="form-label fw-bold">Member Picture</label>
+                            <label for="member_picture_input" class="form-label fw-bold">Member Picture</label>
                             <input type="file" accept=".jpg, .png, .jpeg, .webp" class="form-control shadow-none"
-                                id="memeber_picture_input">
+                                id="member_picture_input">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn text-secondary shadow-none border" data-bs-dismiss="modal"
-                            onclick="reset_general_form()">
+                            onclick="reset_member_form()">
                             CANCEL
                         </button>
-                        <button type="button" class="btn custom-bg text-white shadow-none" onclick="update_general()">
-                            SUBMIT
+                        <button type="button" class="btn custom-bg text-white shadow-none" onclick="add_member()">
+                            ADD
                         </button>
                     </div>
                 </div>
@@ -493,6 +493,73 @@
                 document.getElementById(contacts_input_id[i]).value = contacts_data[i + 1];
             }
             iframe_input.value = contacts_data[10];
+        }
+
+        function add_member() {
+            let member_name = document.getElementById('member_name_input').value.trim();
+            let member_picture = document.getElementById('member_picture_input').files[0];
+
+            // Validate name and picture presence
+            if (member_name === '' || !member_picture) {
+                showToast('danger', 'All fields are required!');
+                return;
+            }
+
+            // Validate file type
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+            if (!allowedTypes.includes(member_picture.type)) {
+                showToast('danger', 'Invalid image type. Allowed types: JPG, PNG, WEBP.');
+                return;
+            }
+
+            // Validate file size (limit: 2MB)
+            const maxSizeMB = 2;
+            if (member_picture.size / (1024 * 1024) > maxSizeMB) {
+                showToast('danger', 'Image size must be less than 2MB.');
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append('member_name', member_name);
+            formData.append('member_picture', member_picture);
+            formData.append('add_member', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+
+            xhr.onload = function () {
+                var myModal = document.getElementById("team-s");
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                let response = this.responseText.trim();
+
+                if (response === '1') {
+                    showToast('success', "Member Added!");
+                    reset_member_form(); 
+                } else if (response === 'inv_img') {
+                    showToast('error', "Invalid image format!");
+                } else if (response === 'inv_size') {
+                    showToast('error', "Image size should be less than 2MB!");
+                } else if (response === 'upd_failed') {
+                    showToast('error', "Image upload failed. Please try again!");
+                } else {
+                    showToast('warning', "No Changes Made!");
+                }
+            };
+
+            xhr.send(formData);
+        }
+
+        function reset_member_form() {
+            let member_name = document.getElementById('member_name_input');
+            let member_picture = document.getElementById('member_picture_input');
+            
+            // Reset the text input value
+            if (member_name) member_name.value = '';
+
+            // Reset the file input
+            if (member_picture) member_picture.value = '';
         }
 
         window.onload = function () {

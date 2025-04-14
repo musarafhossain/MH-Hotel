@@ -65,4 +65,23 @@
             echo json_encode(['error' => 'No data found']);
         }
     }
+
+    if (isset($_POST['add_member'])){
+        $frm_data = filteration($_POST);
+
+        $img_url = uploadImage($_FILES['member_picture'], ABOUT_FOLDER);
+        if($img_url=='inv_img' || $img_url=='inv_size' || $img_url=='upd_failed'){
+            return $img_url;
+        } else {
+            $query = "INSERT INTO `team_details`(`name`, `picture`) VALUES (?,?)";
+            $values = [$frm_data['member_name'], $img_url];
+            $res = insert($query, $values, "ss");
+
+            if ($res) {
+                echo $res;
+            } else {
+                echo json_encode(['error' => 'No data found']);
+            }
+        }
+    }
 ?>
