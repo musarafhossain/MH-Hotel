@@ -71,30 +71,26 @@
     <div class="">
         <div class="swiper swiper-hero">
             <div class="swiper-wrapper">
-                <div class="swiper-slide position-relative">
-                    <img src="./images/carousel/image-1.png" class="w-100 d-block" />
-                    <div class="fade-bottom"></div>
-                </div>
-                <div class="swiper-slide position-relative">
-                    <img src="./images/carousel/image-2.png" class="w-100 d-block" />
-                    <div class="fade-bottom"></div>
-                </div>
-                <div class="swiper-slide position-relative">
-                    <img src="./images/carousel/image-3.png" class="w-100 d-block" />
-                    <div class="fade-bottom"></div>
-                </div>
-                <div class="swiper-slide position-relative">
-                    <img src="./images/carousel/image-4.png" class="w-100 d-block" />
-                    <div class="fade-bottom"></div>
-                </div>
-                <div class="swiper-slide position-relative">
-                    <img src="./images/carousel/image-5.png" class="w-100 d-block" />
-                    <div class="fade-bottom"></div>
-                </div>
-                <div class="swiper-slide position-relative">
-                    <img src="./images/carousel/image-6.png" class="w-100 d-block" />
-                    <div class="fade-bottom"></div>
-                </div>
+                <?php
+                    $res = selectAll('carousel');
+                    $path = CAROUSEL_IMG_PATH;
+            
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        echo <<<data
+                            <style>
+                                .hero-img {
+                                    max-height: 500px;        
+                                    object-fit: cover;    
+                                    width: 100%;         
+                                }
+                            </style>
+                            <div class="swiper-slide position-relative">
+                                <img src="$path$row[image]" class="w-100 hero-img d-block" />
+                                <div class="fade-bottom"></div>
+                            </div>
+                        data;
+                    }
+                ?>
                 <!-- <h1 class="hero-header">UNLOCK YOUR <br>ULTIMATE STAY</h1> -->
             </div>
         </div>

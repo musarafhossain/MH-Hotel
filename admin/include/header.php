@@ -24,6 +24,9 @@
                         <a href="users.php" class="nav-link text-white">Users</a>
                     </li>
                     <li class="nav-items">
+                        <a href="carousel.php" class="nav-link text-white">Carousel</a>
+                    </li>
+                    <li class="nav-items">
                         <a href="settings.php" class="nav-link text-white">Settings</a>
                     </li>
 
