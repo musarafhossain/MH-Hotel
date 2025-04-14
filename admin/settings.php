@@ -167,10 +167,8 @@
                                 Add
                             </button>
                         </div>
-                        <div class="border p-4 rounded">
-                            <h6 class="card-subtitle mb-1 fw-bold">Site Title</h6>
-                            <hr>
-                            <p class="card-text" id="site_title"><?php $UPLOAD_IMAGE_PATH ?></p>
+                        <div class="row" id="team-data">
+                            
                         </div>
                     </div>
                 </div>
@@ -536,7 +534,8 @@
 
                 if (response === '1') {
                     showToast('success', "Member Added!");
-                    reset_member_form(); 
+                    reset_member_form();
+                    get_members();
                 } else if (response === 'inv_img') {
                     showToast('error', "Invalid image format!");
                 } else if (response === 'inv_size') {
@@ -551,10 +550,39 @@
             xhr.send(formData);
         }
 
+        function get_members() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                document.getElementById('team-data').innerHTML = this.responseText;
+            }
+
+            xhr.send('get_members');
+        }
+
+        function delete_member(val){
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                if (this.responseText === '1') {
+                    showToast('success', "Member Removed!");
+                    get_members();
+                } else {
+                    showToast('danger', "Server Down!");
+                }
+            }
+
+            xhr.send('delete_member='+val);
+        }
+
         function reset_member_form() {
             let member_name = document.getElementById('member_name_input');
             let member_picture = document.getElementById('member_picture_input');
-            
+
             // Reset the text input value
             if (member_name) member_name.value = '';
 
@@ -565,6 +593,7 @@
         window.onload = function () {
             get_general();
             get_contacts();
+            get_members();
         }
     </script>
 </body>

@@ -1,4 +1,9 @@
 <?php
+    //Frontend Image path
+    define('SITE_URL', 'http://127.0.0.1/mhhotel/');
+    define('ABOUT_IMG_PATH', SITE_URL.'images/about/');
+
+    // Backend upload path 
     define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT']."/mhhotel/images/");
     define('ABOUT_FOLDER', "about/");
 
@@ -59,6 +64,14 @@
             } else {
                 return 'upd_failed';
             }
+        }
+    }
+
+    function deleteImage($image, $folder){
+        if(unlink(UPLOAD_IMAGE_PATH.$folder.$image)){
+            return true;
+        } else {
+            return false;
         }
     }
 

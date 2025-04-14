@@ -84,4 +84,43 @@
             }
         }
     }
+
+    if (isset($_POST['get_members'])){
+        $res = selectAll('team_details');
+        $path = ABOUT_IMG_PATH;
+
+        while ($row = mysqli_fetch_assoc($res)) {
+            echo <<<data
+                <div class="col-md-2 mb-3">
+                    <div class="card bg-dark text-white">
+                        <img src="$path$row[picture]" class="card-img" alt="...">
+                        <div class="card-img-overlay text-end">
+                            <button type="button" onclick="delete_member($row[sl_no])" class="btn btn-danger btn-sm shadow-none">
+                                <i class="bi bi-trash me-1"></i>
+                                Delete
+                            </button>
+                        </div>
+                        <p class="card-text text-center px-3 py-2">$row[name]</p>
+                    </div>
+                </div>
+            data;
+        }
+    }
+
+    if (isset($_POST['delete_member'])){
+        $frm_data = filteration($_POST);
+        $values= [$frm_data['delete_member']];
+
+        $pre_q = "SELECT * FROM `team_details` WHERE `sl_no`=?";
+        $res = select($pre_q, $values, 'i');
+        $img = mysqli_fetch_assoc($res);
+
+        if(deleteImage($img['picture'], ABOUT_FOLDER)){
+            $q = "DELETE FROM `team_details` WHERE `sl_no`=?";
+            $res = delete($q, $values, "i");
+            echo $res;
+        } else {
+            echo 0;
+        }
+    }
 ?>
