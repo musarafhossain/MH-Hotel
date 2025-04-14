@@ -48,17 +48,62 @@
             background-size: 10px 10px;
         }
 
-        .hero-header{
-            position: absolute;
-            z-index: 10;
-            font-weight: 900;
-            color: #fff;
-            font-size: 8em;
-            text-align: center;
-            top: 50%;
-            translate: 0 -50%;
+        .hero-img {
+            max-height: 500px;
+            object-fit: cover;
             width: 100%;
-            stroke: #444cf7;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bebas Neue', sans-serif;
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            z-index: 2;
+            width: 90%;
+            max-width: 700px;
+            font-weight: normal;
+            word-wrap: break-word;
+            line-height: 1.2;
+            text-shadow:
+                0 0 3px #ffffffaa,
+                0 0 6px #00d9ff,
+                0 0 10px #00d9ff;
+        }
+
+        @media (max-width: 576px) {
+            .hero-text {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (min-width: 577px) and (max-width: 991px) {
+            .hero-text {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .hero-text {
+                font-size: 4.5rem;
+            }
         }
     </style>
 </head>
@@ -72,26 +117,20 @@
         <div class="swiper swiper-hero">
             <div class="swiper-wrapper">
                 <?php
-                    $res = selectAll('carousel');
-                    $path = CAROUSEL_IMG_PATH;
-            
-                    while ($row = mysqli_fetch_assoc($res)) {
-                        echo <<<data
-                            <style>
-                                .hero-img {
-                                    max-height: 500px;        
-                                    object-fit: cover;    
-                                    width: 100%;         
-                                }
-                            </style>
-                            <div class="swiper-slide position-relative">
-                                <img src="$path$row[image]" class="w-100 hero-img d-block" />
-                                <div class="fade-bottom"></div>
-                            </div>
-                        data;
-                    }
-                ?>
-                <!-- <h1 class="hero-header">UNLOCK YOUR <br>ULTIMATE STAY</h1> -->
+                $res = selectAll('carousel');
+                $path = CAROUSEL_IMG_PATH;
+
+                while ($row = mysqli_fetch_assoc($res)) {
+                    echo <<<data
+                        <div class="swiper-slide position-relative">
+                            <img src="$path$row[image]" class="w-100 hero-img d-block" />
+                            <div class="hero-overlay"></div>
+                            <h1 class="hero-text">Experience Comfort<br>Like Never Before</h1>
+                            <div class="fade-bottom"></div>
+                        </div>
+                    data;
+                }
+            ?>
             </div>
         </div>
     </div>
@@ -375,7 +414,8 @@
                     <h5 class="mt-3">Massage</h5>
                 </div>
                 <div class="col-lg-12 text-center mt-lg-5 mt-3">
-                    <a href="facilities.php" class="btn btn-sm btn-outline-dark fw-bold shadow-none py-2">More Facilities >>></a>
+                    <a href="facilities.php" class="btn btn-sm btn-outline-dark fw-bold shadow-none py-2">More
+                        Facilities >>></a>
                 </div>
             </div>
         </div>
@@ -468,18 +508,21 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded border">
-                <iframe src="<?php echo $contact_r['iframe'] ?>" height="320" class="w-100 rounded" loading="lazy" ></iframe>
+                <iframe src="<?php echo $contact_r['iframe'] ?>" height="320" class="w-100 rounded"
+                    loading="lazy"></iframe>
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="bg-white p-4 rounded mb-2 border">
                     <h5>Call Us</h5>
-                    <a href="tel:<?php echo $contact_r['phone'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
+                    <a href="tel:<?php echo $contact_r['phone'] ?>"
+                        class="d-inline-block mb-2 text-decoration-none text-dark">
                         <i class="bi bi-telephone-fill"></i>
                         <?php echo $contact_r['phone'] ?>
                     </a>
                     <br>
                     <h5 class="mt-4">Email</h5>
-                    <a href="mailto:<?php echo $contact_r['email'] ?>" class="d-flex gap-2 mb-2 text-decoration-none text-dark">
+                    <a href="mailto:<?php echo $contact_r['email'] ?>"
+                        class="d-flex gap-2 mb-2 text-decoration-none text-dark">
                         <i class="bi bi-envelope-fill"></i>
                         <?php echo $contact_r['email'] ?>
                     </a>
@@ -487,19 +530,24 @@
                 <div class="bg-white p-4 rounded mb-4 gap-2 border">
                     <h5>Follow Us</h5>
                     <div class="d-flex gap-2">
-                        <a href="<?php echo $contact_r['facebook'] ?>" target="_blank" class="d-inline-block mb-2 text-decoration-none text-dark">
+                        <a href="<?php echo $contact_r['facebook'] ?>" target="_blank"
+                            class="d-inline-block mb-2 text-decoration-none text-dark">
                             <i class="bi bi-facebook text-dark fs-5"></i>
                         </a>
-                        <a href="<?php echo $contact_r['instagram'] ?>" target="_blank" class="d-inline-block mb-2 text-decoration-none">
+                        <a href="<?php echo $contact_r['instagram'] ?>" target="_blank"
+                            class="d-inline-block mb-2 text-decoration-none">
                             <i class="bi bi-instagram text-dark fs-5"></i>
                         </a>
-                        <a href="<?php echo $contact_r['twitter'] ?>" target="_blank" class="d-inline-block mb-2 text-decoration-none text-info">
+                        <a href="<?php echo $contact_r['twitter'] ?>" target="_blank"
+                            class="d-inline-block mb-2 text-decoration-none text-info">
                             <i class="bi bi-twitter text-dark fs-5"></i>
                         </a>
-                        <a href="<?php echo $contact_r['youtube'] ?>" target="_blank" class="d-inline-block mb-2 text-decoration-none">
+                        <a href="<?php echo $contact_r['youtube'] ?>" target="_blank"
+                            class="d-inline-block mb-2 text-decoration-none">
                             <i class="bi bi-youtube text-dark fs-5"></i>
                         </a>
-                        <a href="<?php echo $contact_r['linkedin'] ?>" target="_blank" class="d-inline-block mb-2 text-decoration-none">
+                        <a href="<?php echo $contact_r['linkedin'] ?>" target="_blank"
+                            class="d-inline-block mb-2 text-decoration-none">
                             <i class="bi bi-linkedin text-dark fs-5"></i>
                         </a>
                     </div>
