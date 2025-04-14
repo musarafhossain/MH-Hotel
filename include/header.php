@@ -11,7 +11,7 @@
     $settings_r = mysqli_fetch_assoc(select($settings_q, $values, "i"));
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light px-3 py-2 px-lg-3 py-lg-2 w-100 top-0 z-3 sticky">
+<nav id="nav-bar" class="navbar navbar-expand-lg navbar-light px-3 py-2 px-lg-3 py-lg-2 w-100 top-0 z-3 sticky">
     <div class="container-fluid">
         <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php"><?php echo $settings_r['site_title'] ?></a>
         <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active me-2" aria-current="page" href="index.php">Home</a>
+                    <a class="nav-link me-2" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link me-2" href="rooms.php">Rooms</a>
