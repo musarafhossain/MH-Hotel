@@ -1,11 +1,19 @@
 <?php
- include_once('admin/db/db_config.php');
- include_once('admin/include/essentials.php');
+    include_once('admin/db/db_config.php');
+    include_once('admin/include/essentials.php');
+    
+    $contact_q = "SELECT * FROM `contact_details` WHERE `sl_no`=?";
+    $values = [1];
+    $contact_r = mysqli_fetch_assoc(select($contact_q, $values, "i"));
+    
+    $settings_q = "SELECT * FROM `settings` WHERE `sl_no`=?";
+    $values = [1];
+    $settings_r = mysqli_fetch_assoc(select($settings_q, $values, "i"));
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light px-3 py-2 px-lg-3 py-lg-2 w-100 top-0 z-3 sticky">
     <div class="container-fluid">
-        <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">MH Hotel</a>
+        <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php"><?php echo $settings_r['site_title'] ?></a>
         <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">

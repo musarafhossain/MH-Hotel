@@ -13,6 +13,12 @@
         .box {
             border-top-color: var(--teal) !important;
         }
+
+        .team-img {
+            height: 400px;        
+            object-fit: cover;    
+            width: 100%;         
+        }
     </style>
 </head>
 
@@ -24,17 +30,22 @@
     <div class="my-5 px-4">
         <h2 class="fw-bold h-font text-center">ABOUT US</h2>
         <div class="h-line bg-dark"></div>
-        <p class="text-center mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Deleniti voluptatum
-            totam et eum rem consectetur? Hic labore ipsum alias odio?</p>
+        <p class="text-center mt-3 mx-auto" style="max-width: 700px;">
+            <?php echo $settings_r['site_about'] ?>
+        </p>
     </div>
 
     <!--About Us Section-->
     <div class="container">
         <div class="row justify-content-between align-items-center">
             <div class="col-lg-6 col-md-5 mb-4 order-lg-1 order-md-1 order-2">
-                <h3 class="mb-3">Lorem ipsum dolor sit amet.</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem eum fuga porro sed ullam nobis, ipsum
-                    maxime assumenda eius suscipit.</p>
+                <h3 class="mb-3">Meet Our Founder</h3>
+                <h3 class="mb-3 h-font">John Doe</h3>
+                <p>
+                John Doe started this venture with a vision to revolutionize the hotel industry by blending innovation with compassion. With over a decade of experience and a deep understanding of customer needs, he laid the foundation for a company that thrives on trust, quality, and excellence.
+
+                Under his leadership, the organization has grown from a small startup into a respected name in the field. His passion for delivering real impact and creating meaningful relationships continues to drive our mission forward.
+                </p>
             </div>
             <div class="col-lg-5 col-md-5 mb-4 order-lg-2 order-md-2 order-1">
                 <img src="images/about/about.jpg" class="w-100">
@@ -77,38 +88,18 @@
     <div class="container px-4">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper mb-5">
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded shadow">
-                    <img src="images/about/IMG_17352.jpg" class="w-100">
-                    <h5 class="mt-2">John Doe</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded shadow">
-                    <img src="images/about/IMG_17352.jpg" class="w-100">
-                    <h5 class="mt-2">John Doe</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded shadow">
-                    <img src="images/about/IMG_17352.jpg" class="w-100">
-                    <h5 class="mt-2">John Doe</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded shadow">
-                    <img src="images/about/IMG_17352.jpg" class="w-100">
-                    <h5 class="mt-2">John Doe</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded shadow">
-                    <img src="images/about/IMG_17352.jpg" class="w-100">
-                    <h5 class="mt-2">John Doe</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded shadow">
-                    <img src="images/about/IMG_17352.jpg" class="w-100">
-                    <h5 class="mt-2">John Doe</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded shadow">
-                    <img src="images/about/IMG_17352.jpg" class="w-100">
-                    <h5 class="mt-2">John Doe</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded shadow">
-                    <img src="images/about/IMG_17352.jpg" class="w-100">
-                    <h5 class="mt-2">John Doe</h5>
-                </div>
+            <?php
+                $about_q = selectAll('team_details');
+                $path = ABOUT_IMG_PATH;
+                while ($row = mysqli_fetch_assoc($about_q)) {
+                    echo<<<data
+                        <div class="swiper-slide bg-white text-center overflow-hidden rounded shadow">
+                            <img src="$path$row[picture]" class="team-img w-100">
+                            <h5 class="mt-2">$row[name]</h5>
+                        </div>
+                    data;
+                }
+            ?>
             </div>
         </div>
     </div>
