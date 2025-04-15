@@ -12,7 +12,8 @@
                 aria-label="Toggle navigation">
                 <i class="bi bi-filter fs-1"></i>
             </button>
-            <div style="width: 100%;" class="collapse navbar-collapse flex-column align-items-stretch mt-2" id="adminDropdown">
+            <div style="width: 100%;" class="collapse navbar-collapse flex-column align-items-stretch mt-2"
+                id="adminDropdown">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-items">
                         <a href="dashboard.php" class="nav-link text-white">Dashboard</a>
@@ -35,3 +36,22 @@
         </div>
     </nav>
 </div>
+
+<script>
+    //Manage Link Active
+    function setActive() {
+        let navbar = document.getElementById('admin-nav-bar');
+        let a_tags = navbar.getElementsByTagName('a');
+
+        for (let i = 0; i < a_tags.length; i++) {
+            let file = a_tags[i].href.split('/').pop();
+            let file_name = file.split('.')[0];
+
+            if (document.location.href.indexOf(file_name) >= 0) {
+                a_tags[i].classList.add('active');
+            }
+        }
+    }
+
+    setActive();
+</script>

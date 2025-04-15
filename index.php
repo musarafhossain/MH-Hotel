@@ -90,19 +90,31 @@
 
         @media (max-width: 576px) {
             .hero-text {
-                font-size: 1.8rem;
+                font-size: 2.4rem;
+            }
+        }
+        
+        @media (min-width: 576px) {
+            .hero-text {
+                font-size: 2.7rem;
             }
         }
 
-        @media (min-width: 577px) and (max-width: 991px) {
+        @media (min-width: 842px) and (max-width: 991px) {
             .hero-text {
-                font-size: 2.5rem;
+                font-size: 4.5rem;
             }
         }
 
         @media (min-width: 992px) {
             .hero-text {
-                font-size: 4.5rem;
+                font-size: 5.5rem;
+            }
+        }
+
+        @media (min-width: 1350px) {
+            .hero-text {
+                font-size: 6rem;
             }
         }
     </style>

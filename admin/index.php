@@ -19,24 +19,31 @@
     <?php require_once('./include/links.php'); ?>
 
     <style>
-        .login-form{
+        .login-form {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 450px;
         }
+
+        @media (max-width: 450px) {
+            .login-form {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-light">
     <div class="login-form rounded bg-white shadow overflow-hidden">
-        <form action="" method="post">
+        <form method="post">
             <h4 class="text-center bg-dark text-white py-3">ADMIN LOGIN PANEL</h4>
             <div class="p-4">
                 <div class="mb-3">
                     <label for="login-name" class="form-label">Username</label>
-                    <input type="text" required name="admin_name" class="form-control shadow-none" id="login-name" autoComplete="username">
+                    <input type="text" required name="admin_name" class="form-control shadow-none" id="login-name"
+                        autoComplete="username">
                 </div>
                 <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
