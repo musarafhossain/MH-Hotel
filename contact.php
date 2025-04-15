@@ -70,25 +70,25 @@
             <!--Contact us form-->
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4">
-                    <form action="">
+                    <form method="post">
                         <h5>Send a message</h5>
                         <div class="mb-3 mt-4">
                             <label for="contact-name" class="form-label" style="font-weight: 500;">Name</label>
-                            <input type="name" class="form-control shadow-none" id="contact-name" autoComplete="username">
+                            <input type="name" name="name" required class="form-control shadow-none" id="contact-name" autoComplete="username">
                         </div>
                         <div class="mb-3">
                             <label for="contact-email" class="form-label" style="font-weight: 500;">Email</label>
-                            <input type="email" class="form-control shadow-none" id="contact-email" autoComplete="username">
+                            <input type="email" name="email" required class="form-control shadow-none" id="contact-email" autoComplete="username">
                         </div>
                         <div class="mb-3">
                             <label for="contact-subject" class="form-label" style="font-weight: 500;">Subject</label>
-                            <input type="text" class="form-control shadow-none" id="contact-subject" autoComplete="subject">
+                            <input type="text" name="subject" required class="form-control shadow-none" id="contact-subject" autoComplete="subject">
                         </div>
                         <div class="mb-3">
                             <label for="contact-message" class="form-label" style="font-weight: 500;">Message</label>
-                            <textarea class="form-control shadow-none" id="contact-message" rows="5" style="resize: none;" autocomplete="message"></textarea>
+                            <textarea class="form-control shadow-none"  name="message" required id="contact-message" rows="5" style="resize: none;" autocomplete="message"></textarea>
                         </div>
-                        <button type="submit" class="btn text-white custom-bg gap-2 d-flex shadow-none" style="font-weight: 500;">
+                        <button type="submit" name="send" class="btn text-white custom-bg gap-2 d-flex shadow-none" style="font-weight: 500;">
                             SEND
                             <i class="bi bi-arrow-right-circle"></i>
                         </button>
@@ -97,6 +97,38 @@
             </div>
         </div>
     </div>
+
+    <?php
+        if (isset($_POST['send'])) {
+            $frm_data = filteration($_POST);
+
+            // Check for empty fields
+            if (
+                empty($frm_data['name']) ||
+                empty($frm_data['email']) ||
+                empty($frm_data['subject']) ||
+                empty($frm_data['message'])
+            ) {
+                toast("danger", "All fields are required.");
+            } else {
+                $q = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES (?, ?, ?, ?)";
+                $values = [
+                    $frm_data['name'],
+                    $frm_data['email'],
+                    $frm_data['subject'],
+                    $frm_data['message']
+                ];
+
+                $res = insert($q, $values, "ssss");
+
+                if ($res == 1) {
+                    toast("success", "Mail Sent!");
+                } else {
+                    toast("danger", "Server Down!");
+                }
+            }
+        }
+    ?>
 
     <!--Footer-->
     <?php require_once('./include/footer.php'); ?>
