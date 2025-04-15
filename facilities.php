@@ -39,7 +39,7 @@
                         <div class="col-lg-4 col-md-6 mb-5 px-4">
                             <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
                                 <div class="d-flex align-items-center mb-3">
-                                    <img src="$path$row[icon]" width="50px" alt="Room" class="rounded-circle me-3">
+                                    <img src="$path$row[icon]" width="50px" alt="Room" class="me-3">
                                     <h5 class="m-0">$row[name]</h5>
                                 </div>
                                 <p>$row[description]</p>

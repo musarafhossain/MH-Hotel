@@ -429,7 +429,7 @@
             <div class="swiper-wrapper mb-5">
                 <div class="swiper-slide bg-white p-4 border">
                     <div class="profile d-flex align-items-center mb-3">
-                        <img src="./images/facilities/wifi.svg" width="30px">
+                        <img src="./images/others/wifi.svg" width="30px">
                         <h6 class="m-0 ms-2">Jhon Doe</h6>
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, voluptatem?</p>
@@ -441,7 +441,7 @@
                 </div>
                 <div class="swiper-slide bg-white p-4 border">
                     <div class="profile d-flex align-items-center mb-3">
-                        <img src="./images/facilities/wifi.svg" width="30px">
+                        <img src="./images/others/wifi.svg" width="30px">
                         <h6 class="m-0 ms-2">Jhon Doe</h6>
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, voluptatem?</p>
@@ -453,7 +453,7 @@
                 </div>
                 <div class="swiper-slide bg-white p-4 border">
                     <div class="profile d-flex align-items-center mb-3">
-                        <img src="./images/facilities/wifi.svg" width="30px">
+                        <img src="./images/others/wifi.svg" width="30px">
                         <h6 class="m-0 ms-2">Jhon Doe</h6>
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, voluptatem?</p>
@@ -465,7 +465,7 @@
                 </div>
                 <div class="swiper-slide bg-white p-4 border">
                     <div class="profile d-flex align-items-center mb-3">
-                        <img src="./images/facilities/wifi.svg" width="30px">
+                        <img src="./images/others/wifi.svg" width="30px">
                         <h6 class="m-0 ms-2">Jhon Doe</h6>
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, voluptatem?</p>
@@ -477,7 +477,7 @@
                 </div>
                 <div class="swiper-slide bg-white p-4 border">
                     <div class="profile d-flex align-items-center mb-3">
-                        <img src="./images/facilities/wifi.svg" width="30px">
+                        <img src="./images/others/wifi.svg" width="30px">
                         <h6 class="m-0 ms-2">Jhon Doe</h6>
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, voluptatem?</p>
@@ -489,7 +489,7 @@
                 </div>
                 <div class="swiper-slide bg-white p-4 border">
                     <div class="profile d-flex align-items-center mb-3">
-                        <img src="./images/facilities/wifi.svg" width="30px">
+                        <img src="./images/others/wifi.svg" width="30px">
                         <h6 class="m-0 ms-2">Jhon Doe</h6>
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, voluptatem?</p>
