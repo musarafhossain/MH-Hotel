@@ -204,11 +204,11 @@ function add_member() {
             reset_member_form();
             get_members();
         } else if (response === 'inv_img') {
-            showToast('error', "Invalid image format!");
+            showToast('danger', "Invalid image format!");
         } else if (response === 'inv_size') {
-            showToast('error', "Image size should be less than 2MB!");
+            showToast('danger', "Image size should be less than 2MB!");
         } else if (response === 'upd_failed') {
-            showToast('error', "Image upload failed. Please try again!");
+            showToast('danger', "Image upload failed. Please try again!");
         } else {
             showToast('warning', "No Changes Made!");
         }

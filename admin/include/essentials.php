@@ -3,11 +3,13 @@
     define('SITE_URL', 'http://127.0.0.1/mhhotel/');
     define('ABOUT_IMG_PATH', SITE_URL.'images/about/');
     define('CAROUSEL_IMG_PATH', SITE_URL.'images/carousel/');
+    define('FACILITIES_IMG_PATH', SITE_URL.'images/facilities/');
 
     // Backend upload path 
     define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT']."/mhhotel/images/");
     define('ABOUT_FOLDER', "about/");
     define('CAROUSEL_FOLDER', "carousel/");
+    define('FACILITIES_FOLDER', "facilities/");
 
     function alert($type, $msg){
         echo<<<alert
@@ -83,5 +85,26 @@
             redirect('index.php');
         }
         //session_regenerate_id(true);
+    }
+
+    function uploadSVGImage($image, $folder) {
+        $valid_mime = ['image/svg+xml'];
+        $img_mime = $image['type'];
+
+        if (!in_array($img_mime, $valid_mime)) {
+            return 'inv_img';
+        } else if (($image['size'] / (1024 * 1024)) > 1) {
+            return 'inv_size';
+        } else {
+            $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+            $new_name = "IMG_" . uniqid() . '.' . $ext;
+            $img_path = UPLOAD_IMAGE_PATH . $folder . $new_name;
+
+            if (move_uploaded_file($image['tmp_name'], $img_path)) {
+                return $new_name;
+            } else {
+                return 'upd_failed';
+            }
+        }
     }
 ?>
