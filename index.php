@@ -93,7 +93,7 @@
                 font-size: 2.4rem;
             }
         }
-        
+
         @media (min-width: 576px) {
             .hero-text {
                 font-size: 2.7rem;
@@ -405,30 +405,19 @@
         <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">OUR FACILITIES</h2>
         <div class="container">
             <div class="row justify-content-evenly px-lg-0 p-md-0 px-5 gap-2">
-                <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                    <img src="./images/facilities/wifi.svg" alt="" srcset="" width="80px">
-                    <h5 class="mt-3">Wifi</h5>
-                </div>
-                <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                    <img src="./images/facilities/tv.svg" alt="" srcset="" width="80px">
-                    <h5 class="mt-3">TV</h5>
-                </div>
-                <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                    <img src="./images/facilities/ac.svg" alt="" srcset="" width="80px">
-                    <h5 class="mt-3">AC</h5>
-                </div>
-                <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                    <img src="./images/facilities/heater.svg" alt="" srcset="" width="80px">
-                    <h5 class="mt-3">Heater</h5>
-                </div>
-                <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                    <img src="./images/facilities/massage.svg" alt="" srcset="" width="80px">
-                    <h5 class="mt-3">Massage</h5>
-                </div>
-                <div class="col-lg-12 text-center mt-lg-5 mt-3">
-                    <a href="facilities.php" class="btn btn-sm btn-outline-dark fw-bold shadow-none py-2">More
-                        Facilities >>></a>
-                </div>
+                <?php
+                    $res = selectAll('facilities');
+                    $path = FACILITIES_IMG_PATH;
+
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        echo<<<data
+                            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                                <img src="$path$row[icon]" alt="" srcset="" width="80px">
+                                <h5 class="mt-3">$row[name]</h5>
+                            </div>
+                        data;
+                    }
+                ?>
             </div>
         </div>
     </div>
