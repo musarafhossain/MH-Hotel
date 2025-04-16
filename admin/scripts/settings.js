@@ -4,6 +4,7 @@ function get_general() {
     let site_title = document.getElementById('site_title');
     let site_about = document.getElementById('site_about');
     let site_title_input = document.getElementById('site_title_input');
+    let site_heading_input = document.getElementById('site_heading_input');
     let site_about_input = document.getElementById('site_about_input');
 
     let shutdown_toggle = document.getElementById("shutdown_toggle");
@@ -16,9 +17,11 @@ function get_general() {
         general_data = JSON.parse(this.responseText);
 
         site_title.innerText = general_data.site_title;
+        site_heading.innerText = general_data.site_heading;
         site_about.innerText = general_data.site_about;
 
         site_title_input.value = general_data.site_title;
+        site_heading_input.value = general_data.site_heading;
         site_about_input.value = general_data.site_about;
 
         if (general_data.shutdown == 0) {
@@ -35,10 +38,11 @@ function get_general() {
 
 function update_general() {
     let site_title_value = document.getElementById('site_title_input').value.trim();
+    let site_heading_value = document.getElementById('site_heading_input').value.trim();
     let site_about_value = document.getElementById('site_about_input').value.trim();
 
     // Check if any field is empty
-    if (site_title_value === '' || site_about_value === '') {
+    if (site_title_value === '' || site_heading_value === '' || site_about_value === '') {
         showToast('danger', 'All fields are required!');
         return;
     }
@@ -60,11 +64,12 @@ function update_general() {
         }
     }
 
-    xhr.send('site_title=' + site_title_value + '&site_about=' + site_about_value + '&update_general');
+    xhr.send('site_title=' + site_title_value + '&site_heading=' + site_heading_value + '&site_about=' + site_about_value + '&update_general');
 }
 
 function reset_general_form() {
     document.getElementById('site_title_input').value = general_data.site_title;
+    document.getElementById('site_heading_input').value = general_data.site_heading;
     document.getElementById('site_about_input').value = general_data.site_about;
 }
 

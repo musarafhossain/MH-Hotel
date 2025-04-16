@@ -129,20 +129,21 @@
         <div class="swiper swiper-hero">
             <div class="swiper-wrapper">
                 <?php
-                $res = selectAll('carousel');
-                $path = CAROUSEL_IMG_PATH;
+                    $res = selectAll('carousel');
+                    $settings = mysqli_fetch_assoc(selectAll('settings')); // Fetch settings once
+                    $path = CAROUSEL_IMG_PATH;
 
-                while ($row = mysqli_fetch_assoc($res)) {
-                    echo <<<data
-                        <div class="swiper-slide position-relative">
-                            <img src="$path$row[image]" class="w-100 hero-img d-block" />
-                            <div class="hero-overlay"></div>
-                            <h1 class="hero-text">Experience Comfort<br>Like Never Before</h1>
-                            <div class="fade-bottom"></div>
-                        </div>
-                    data;
-                }
-            ?>
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        echo <<<HTML
+                            <div class="swiper-slide position-relative">
+                                <img src="{$path}{$row['image']}" class="w-100 hero-img d-block" />
+                                <div class="hero-overlay"></div>
+                                <h1 class="hero-text">{$settings['site_heading']}</h1>
+                                <div class="fade-bottom"></div>
+                            </div>
+                        HTML;
+                    }
+                ?>
             </div>
         </div>
     </div>

@@ -40,6 +40,11 @@
                             <hr>
                             <p class="card-text" id="site_title"></p>
                         </div>
+                        <div class="border p-4 rounded">
+                            <h6 class="card-subtitle mb-1 fw-bold">Site Heading</h6>
+                            <hr>
+                            <p class="card-text" id="site_heading"></p>
+                        </div>
                         <div class="border p-4 rounded mt-2">
                             <h6 class="card-subtitle mb-1 fw-bold">About us</h6>
                             <hr>
@@ -188,6 +193,10 @@
                         <div class="mb-3">
                             <label for="site_title_input" class="form-label fw-bold">Site Title</label>
                             <input type="text" class="form-control shadow-none" id="site_title_input">
+                        </div>
+                        <div class="mb-3">
+                            <label for="site_heading_input" class="form-label fw-bold">Site Heading</label>
+                            <input type="text" class="form-control shadow-none" id="site_heading_input">
                         </div>
                         <div class="mb-3">
                             <label for="site_about_input" class="form-label fw-bold">About us</label>

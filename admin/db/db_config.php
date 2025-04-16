@@ -16,15 +16,29 @@
     }
 
     function filteration($data){
-        foreach ($data as $key => $value) {
-            $value = trim($value);
-            $value = stripslashes($value);
-            $value = htmlspecialchars($value);
-            $value = strip_tags($value);
-            $data[$value] = $value;
+        if (!is_array($data)) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            $data = strip_tags($data);
+            return $data;
         }
-        return $data;
-    }
+    
+        $filtered = [];
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                $filtered[$key] = filteration($value);  // recursive call for nested arrays
+            } else {
+                $value = trim($value);
+                $value = stripslashes($value);
+                $value = htmlspecialchars($value);
+                $value = strip_tags($value);
+                $filtered[$key] = $value;
+            }
+        }
+    
+        return $filtered;
+    }    
 
     function select($sql, $values, $datatypes){
         $conn = $GLOBALS['conn'];

@@ -17,14 +17,14 @@
     
     if (isset($_POST['update_general'])) {
         $frm_data = filteration($_POST);
-        $query = "UPDATE `settings` SET `site_title`=?,`site_about`=? WHERE `sl_no`=?";
-        $values = [$frm_data['site_title'], $frm_data['site_about'], 1];
-        $res = update($query, $values, "ssi");
+        $query = "UPDATE `settings` SET `site_title`=?,`site_heading`=?,`site_about`=? WHERE `sl_no`=?";
+        $values = [$frm_data['site_title'], $frm_data['site_heading'], $frm_data['site_about'], 1];
+        $res = update($query, $values, "sssi");
 
         if ($res) {
             echo $res;
         } else {
-            echo json_encode(['error' => 'No data found']);
+            echo json_encode(['error' => "No data found $frm_data[site_about]"]);
         }
     }
     
