@@ -77,7 +77,7 @@
 
                     while ($room_row = mysqli_fetch_assoc($room_data)) {
                         // get features of room
-                        $fea_q = mysqli_query($conn, "SELECT f.name FROM `features` f INNER JOIN `room_features` rfea ON f.sl_no = rfea.sl_no WHERE rfea.room_id = '{$room_row['sl_no']}'");
+                        $fea_q = mysqli_query($conn, "SELECT f.name FROM `features` f INNER JOIN `room_features` rfea ON f.sl_no = rfea.features_id WHERE rfea.room_id = '{$room_row['sl_no']}'");
 
                         $feature_data = "";
 
@@ -90,7 +90,7 @@
                         }
 
                         // get facilities of room
-                        $fac_q = mysqli_query($conn, "SELECT f.name FROM `facilities` f INNER JOIN `room_facilities` rfac ON f.sl_no = rfac.sl_no WHERE rfac.room_id = '{$room_row['sl_no']}'");
+                        $fac_q = mysqli_query($conn, "SELECT f.name FROM `facilities` f INNER JOIN `room_facilities` rfac ON f.sl_no = rfac.facilities_id WHERE rfac.room_id = '{$room_row['sl_no']}'");
 
                         $facilities_data = "";
                         while ($fac_row = mysqli_fetch_assoc($fac_q)) {
