@@ -157,11 +157,13 @@
                                     <?php
                                         $res = selectAll('features');
                                         while($opt = mysqli_fetch_assoc($res)){
-                                            echo<<<HTML
+                                            $fullName = htmlspecialchars($opt['name'], ENT_QUOTES); // for safety
+
+                                            echo <<<HTML
                                                 <div class="col-md-3 mb-1">
-                                                    <label>
-                                                        <input type="checkbox" name="features" value="$opt[sl_no]" class="form-check-input shadow-none">
-                                                        $opt[name]
+                                                    <label title="$fullName" class="d-block text-truncate" style="max-width: 100%;">
+                                                        <input type="checkbox" name="features" value="$opt[sl_no]" class="form-check-input shadow-none me-1">
+                                                        $fullName
                                                     </label>
                                                 </div>
                                             HTML;
@@ -304,226 +306,50 @@
         </div>
     </div>
 
+    <!-- Manage room images modal -->
+    <div class="modal fade" id="room-images" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Room Name</h1>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="border-bottom border-3 pb-3 mb-3">
+                        <form id="add_image_form">
+                            <label for="member_picture_input" class="form-label fw-bold">Add Image</label>
+                            <input type="file" accept=".jpg, .png, .jpeg, .webp" class="form-control shadow-none mb-3"
+                                name="image" required>
+                            <button type="button" class="btn custom-bg text-white shadow-none" onclick="add_image()">
+                                ADD
+                            </button>
+                            <input type="hidden" name="room_id">
+                        </form>
+                    </div>
+                    <div class="table-responsive-lg" style="height: 350px; overflow-y: auto;">
+                        <table class="table table-bordered table-hover border-info text-center">
+                            <thead>
+                                <tr class="table-dark">
+                                    <th scope="col" width="60%">Image</th>
+                                    <th scope="col">Thumb</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="room-image-data">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--Include Common Scripts-->
     <?php require_once('./include/scripts.php'); ?>
 
-    <script>
-        let add_room_form = document.getElementById('add_room_form');
-        let edit_room_form = document.getElementById('edit_room_form');
-
-        function edit_room() {
-            let room_id = edit_room_form.elements['room_id']?.value;
-            let room_name = edit_room_form.elements['room_name']?.value;
-            let room_area = edit_room_form.elements['room_area']?.value;
-            let room_price = edit_room_form.elements['room_price']?.value;
-            let room_quantity = edit_room_form.elements['room_quantity']?.value;
-            let room_adult = edit_room_form.elements['room_adult']?.value;
-            let room_children = edit_room_form.elements['room_children']?.value;
-            let room_description = edit_room_form['room_description']?.value;
-
-            let features = [];
-            edit_room_form.elements['features'].forEach(el => {
-                if (el.checked) {
-                    features.push(el.value);
-                }
-            });
-
-            let facilities = [];
-            edit_room_form.elements['facilities'].forEach(el => {
-                if (el.checked) {
-                    facilities.push(el.value);
-                }
-            });
-            console.log(room_name, room_area, room_price, room_quantity, room_adult, room_children, room_description, features, facilities)
-
-            // Validate name and picture presence
-            if (
-                room_name.trim() === '' ||
-                room_area.trim() === '' ||
-                room_price.trim() === '' ||
-                room_quantity.trim() === '' ||
-                room_adult.trim() === '' ||
-                room_children.trim() === '' ||
-                room_description.trim() === ''
-            ) {
-                showToast('danger', 'All fields are required!');
-                return;
-            }
-
-            let formData = new FormData();
-            formData.append('room_id', room_id);
-            formData.append('room_name', room_name);
-            formData.append('room_area', room_area);
-            formData.append('room_price', room_price);
-            formData.append('room_quantity', room_quantity);
-            formData.append('room_adult', room_adult);
-            formData.append('room_children', room_children);
-            formData.append('room_description', room_description);
-            formData.append('room_features', JSON.stringify(features));
-            formData.append('room_facilities', JSON.stringify(facilities));
-            formData.append('edit_room', '');
-
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "ajax/rooms_crud.php", true);
-
-            xhr.onload = function () {
-                var myModal = document.getElementById("edit-room");
-                var modal = bootstrap.Modal.getInstance(myModal);
-                modal.hide();
-
-                let response = this.responseText.trim();
-
-                if (response === '1') {
-                    showToast('success', "Room Edited!");
-                    edit_room_form.reset();
-                    get_rooms();
-                } else {
-                    showToast('danger', "Server Down!");
-                }
-            };
-
-            xhr.send(formData);
-        }
-
-        function get_rooms() {
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "ajax/rooms_crud.php", true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-            xhr.onload = function () {
-                document.getElementById('room-data').innerHTML = this.responseText;
-            }
-
-            xhr.send('get_rooms');
-        }
-
-        function edit_details(id) {
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "ajax/rooms_crud.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-            xhr.onload = function () {
-                data = JSON.parse(this.responseText);
-                edit_room_form.elements['room_name'].value = data.roomdata.name;
-                edit_room_form.elements['room_area'].value = data.roomdata.area;
-                edit_room_form.elements['room_price'].value = data.roomdata.price;
-                edit_room_form.elements['room_quantity'].value = data.roomdata.quantity;
-                edit_room_form.elements['room_adult'].value = data.roomdata.adult;
-                edit_room_form.elements['room_children'].value = data.roomdata.children;
-                edit_room_form.elements['room_description'].value = data.roomdata.description;
-                edit_room_form.elements['room_id'].value = data.roomdata.sl_no;
-                edit_room_form.elements['features'].forEach(el => {
-                    if (data.features.includes(parseInt(el.value))) {
-                        el.checked = true;
-                    } else {
-                        el.checked = false;
-                    }
-                });
-                edit_room_form.elements['facilities'].forEach(el => {
-                    if (data.facilities.includes(parseInt(el.value))) {
-                        el.checked = true;
-                    } else {
-                        el.checked = false;
-                    }
-                });
-            };
-
-            xhr.send('get_room=' + id);
-        }
-
-        function add_room() {
-            let room_name = add_room_form.elements['room_name']?.value;
-            let room_area = add_room_form.elements['room_area']?.value;
-            let room_price = add_room_form.elements['room_price']?.value;
-            let room_quantity = add_room_form.elements['room_quantity']?.value;
-            let room_adult = add_room_form.elements['room_adult']?.value;
-            let room_children = add_room_form.elements['room_children']?.value;
-            let room_description = add_room_form['room_description']?.value;
-
-            let features = [];
-            add_room_form.elements['features'].forEach(el => {
-                if (el.checked) {
-                    features.push(el.value);
-                }
-            });
-
-            let facilities = [];
-            add_room_form.elements['facilities'].forEach(el => {
-                if (el.checked) {
-                    facilities.push(el.value);
-                }
-            });
-
-            // Validate name and picture presence
-            if (
-                room_name.trim() === '' ||
-                room_area.trim() === '' ||
-                room_price.trim() === '' ||
-                room_quantity.trim() === '' ||
-                room_adult.trim() === '' ||
-                room_children.trim() === '' ||
-                room_description.trim() === ''
-            ) {
-                showToast('danger', 'All fields are required!');
-                return;
-            }
-
-            let formData = new FormData();
-            formData.append('room_name', room_name);
-            formData.append('room_area', room_area);
-            formData.append('room_price', room_price);
-            formData.append('room_quantity', room_quantity);
-            formData.append('room_adult', room_adult);
-            formData.append('room_children', room_children);
-            formData.append('room_description', room_description);
-            formData.append('room_features', JSON.stringify(features));
-            formData.append('room_facilities', JSON.stringify(facilities));
-            formData.append('add_room', '');
-
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "ajax/rooms_crud.php", true);
-
-            xhr.onload = function () {
-                var myModal = document.getElementById("add-room");
-                var modal = bootstrap.Modal.getInstance(myModal);
-                modal.hide();
-
-                let response = this.responseText.trim();
-
-                if (response === '1') {
-                    showToast('success', "New Room Added!");
-                    add_room_form.reset();
-                    get_rooms();
-                } else {
-                    showToast('danger', "Server Down!");
-                }
-            };
-
-            xhr.send(formData);
-        }
-
-        function toggle_status(id, val) {
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "ajax/rooms_crud.php", true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-            xhr.onload = function () {
-                let response = this.responseText.trim();
-                if (response === '1') {
-                    showToast('success', "Status Toggled!");
-                    get_rooms();
-                } else {
-                    showToast('danger', "Server Down!");
-                }
-            }
-
-            xhr.send('toggle_status=' + id + '&value=' + val);
-        }
-
-        window.onload = function () {
-            get_rooms();
-        }
-    </script>
+    <script src="./scripts/rooms.js"></script>
 </body>
 
 </html>
