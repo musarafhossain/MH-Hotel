@@ -92,7 +92,7 @@
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action='#'>
+            <form id="register-form" novalidate>
                 <div class="modal-header">
                     <h1 class="modal-title fs-5 d-flex align-items-center">
                         <i class="bi bi-person-lines-fill fs-3 me-2"></i>
@@ -110,45 +110,93 @@
                         <div class="row">
                             <div class="col-md-6 p-0 pe-md-3 mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control shadow-none" id="name" autocomplete="name">
+                                <input 
+                                    type="text" 
+                                    class="form-control shadow-none" id="name" 
+                                    autocomplete="name" 
+                                    required
+                                    name="name"
+                                >
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label for="registration-email" class="form-label">Email</label>
-                                <input type="email" class="form-control shadow-none" id="registration-email"
-                                    autocomplete="email">
+                                <input 
+                                    type="email" 
+                                    class="form-control shadow-none" id="registration-email"
+                                    autocomplete="email" 
+                                    required
+                                    name="email"
+                                >
                             </div>
                             <div class="col-md-6 p-0 pe-md-3 mb-3">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control shadow-none" id="phone" autocomplete="tel">
+                                <input 
+                                    type="tel" 
+                                    class="form-control shadow-none" id="phone" 
+                                    autocomplete="tel" 
+                                    required
+                                    name="phonenumber"
+                                >
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label for="picture" class="form-label">Picture</label>
-                                <input type="file" class="form-control shadow-none" id="picture">
+                                <input 
+                                    type="file" 
+                                    class="form-control shadow-none" id="picture"
+                                    accept="image/png, image/webp, image/jpeg, image/jpg" 
+                                    required
+                                    name="profile"
+                                >
                             </div>
                             <div class="col-md-12 p-0 mb-3">
                                 <label for="address" class="form-label">Address</label>
-                                <textarea class="form-control shadow-none" id="address"
-                                    autocomplete="street-address"></textarea>
+                                <textarea 
+                                    class="form-control shadow-none" id="address"
+                                    autocomplete="street-address" required
+                                    name="address"
+                                    rows="3"
+                                ></textarea>
                             </div>
                             <div class="col-md-6 p-0 pe-md-3 mb-3">
                                 <label for="pincode" class="form-label">Pincode</label>
-                                <input type="tel" class="form-control shadow-none" id="pincode"
-                                    autocomplete="postal-code">
+                                <input 
+                                    type="tel" 
+                                    class="form-control shadow-none" id="pincode"
+                                    autocomplete="postal-code" 
+                                    required
+                                    name="pincode"
+                                >
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label for="dob" class="form-label">Date of Birth</label>
-                                <input type="date" class="form-control shadow-none" id="dob">
+                                <input 
+                                    type="date" 
+                                    class="form-control shadow-none" id="dob" 
+                                    autocomplete="bday" 
+                                    required
+                                    name="dob"
+                                >
                             </div>
                             <div class="col-md-6 p-0 pe-md-3 mb-3">
                                 <label for="registration-password" class="form-label">Password</label>
-                                <input type="password" class="form-control shadow-none" id="registration-password"
-                                    autocomplete="new-password">
+                                <input 
+                                    type="password" 
+                                    class="form-control shadow-none" id="registration-password"
+                                    autocomplete="new-password" 
+                                    required
+                                    name="password"
+                                >
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label for="registration-confirm-password" class="form-label">Confirm
                                     Password</label>
-                                <input type="password" class="form-control shadow-none"
-                                    id="registration-confirm-password" autocomplete="new-password">
+                                <input 
+                                    type="password" 
+                                    class="form-control shadow-none"
+                                    id="registration-confirm-password" autocomplete="new-password" 
+                                    required
+                                    name="cpassword"
+                                >
                             </div>
                         </div>
                     </div>

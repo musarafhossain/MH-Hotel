@@ -6,12 +6,16 @@
     define('FACILITIES_IMG_PATH', SITE_URL.'images/facilities/');
     define('ROOMS_IMG_PATH', SITE_URL.'images/rooms/');
 
+    // sendgrid API key
+    define('SENDGRID_API_KEY', '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');
+
     // Backend upload path 
     define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT']."/mhhotel/images/");
     define('ABOUT_FOLDER', "about/");
     define('CAROUSEL_FOLDER', "carousel/");
     define('FACILITIES_FOLDER', "facilities/");
     define('ROOMS_FOLDER', "rooms/");
+    define('USERS_FOLDER', "users/");
 
     function alert($type, $msg){
         echo<<<alert
@@ -109,4 +113,43 @@
             }
         }
     }
+
+    function uploadUserImage($image) {
+        $valid_mime = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+        $img_mime = $image['type'];
+    
+        // Check if the file is a valid image type
+        if (!in_array($img_mime, $valid_mime)) {
+            return 'inv_img'; // Invalid image type
+        }
+    
+        // Get the extension and convert it to lowercase
+        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $ext = strtolower($ext);
+    
+        // Generate a new unique name for the image
+        $new_name = "IMG_" . uniqid() . '.jpeg'; // Always save as .jpeg
+        $img_path = UPLOAD_IMAGE_PATH . USERS_FOLDER . $new_name;
+    
+        // Create image resource based on the original MIME type
+        switch ($ext) {
+            case 'png':
+                $img = imagecreatefrompng($image['tmp_name']);
+                break;
+            case 'webp':
+                $img = imagecreatefromwebp($image['tmp_name']);
+                break;
+            default:
+                $img = imagecreatefromjpeg($image['tmp_name']); // If JPEG, no conversion needed
+                break;
+        }
+    
+        // Save the image as JPEG, with 75% quality
+        if (imagejpeg($img, $img_path, 75)) {
+            return $new_name;
+        } else {
+            return 'upd_failed'; // Failed to upload
+        }
+    }
+    
 ?>

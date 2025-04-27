@@ -166,7 +166,7 @@
                             echo <<<book
                                 <div class="d-flex flex-md-row gap-2">
                                     <a href="#" class="btn text-white custom-bg shadow-none py-3 w-50">Book Now</a>
-                                    <a href="rooms.php" class="btn  btn-outline-dark shadow-none py-3 w-50"><<< Back to Rooms</a>
+                                    <a href="rooms.php" class="btn  btn-outline-dark shadow-none py-3 w-50"><<< Back</a>
                                 </div>
                             book;
                         ?>
