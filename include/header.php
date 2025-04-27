@@ -38,15 +38,35 @@
                 </li>
             </ul>
             <div class="d-flex" role="search">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal"
-                    data-bs-target="#loginModal">
-                    Login
-                </button>
-                <button type="button" class="btn btn-outline-dark shadow-none" data-bs-toggle="modal"
-                    data-bs-target="#registerModal">
-                    Register
-                </button>
+                <?php
+                    if(isset($_SESSION['login']) && $_SESSION['login'] == true){
+                        $path = USERS_IMG_PATH;
+                        echo <<<HTML
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <img src="$path$_SESSION[USER_PROFILE]" alt="$_SESSION[USER_NAME]" class="rounded-circle me-1" width="30px" height="30px">
+                                    <span class="d-none d-lg-inline"> {$_SESSION['USER_NAME']}</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-lg-end">
+                                    <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                                    <li><a class="dropdown-item" href="bookings.php">Bookings</a></li>
+                                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                            </div>
+                        HTML;
+                    } else {
+                        echo <<<HTML
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal"
+                                data-bs-target="#loginModal">
+                                Login
+                            </button>
+                            <button type="button" class="btn btn-outline-dark shadow-none" data-bs-toggle="modal"
+                                data-bs-target="#registerModal">
+                                Register
+                            </button>
+                        HTML;
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -57,7 +77,7 @@
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action='#'>
+            <form id="login-form" novalidate>
                 <div class="modal-header">
                     <h1 class="modal-title fs-5 d-flex align-items-center">
                         <i class="bi bi-person-circle fs-3 me-2"></i>
@@ -68,13 +88,25 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="login-email" class="form-label">Email address</label>
-                        <input type="email" class="form-control shadow-none" id="login-email" autoComplete="username">
+                        <label for="login-email" class="form-label">Email/Mobile</label>
+                        <input 
+                            type="email" 
+                            class="form-control shadow-none" id="login-email" 
+                            autoComplete="username"
+                            required
+                            name="email_mob"
+                        >
                     </div>
                     <div class="mb-4">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control shadow-none" id="password"
-                            autoComplete="current-password">
+                        <input 
+                            type="password" 
+                            class="form-control shadow-none" 
+                            id="password"
+                            autoComplete="current-password"
+                            required
+                            name="password"
+                        >
                     </div>
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <button type="submit" class="btn btn-dark shadow-none">LOGIN</button>

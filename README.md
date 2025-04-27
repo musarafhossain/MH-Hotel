@@ -42,10 +42,3 @@
         | Rooms | Review & ratings |
         | Users | Shutdown |
         | Bookings |
-- ## Pre-requisites
-    - ### Front End - Homepage
-        - #### Font Family: Merienda (weight: 300-900), Poppins (weight: 400, 500 & 600)
-        - #### Swiper JS for Carousels
-        - #### Bootstrap Icon
-        - #### Google Map Embed
-        - #### Custom Colors: `#2ec1ac`,`#279e8c` 

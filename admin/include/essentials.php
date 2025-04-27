@@ -5,6 +5,7 @@
     define('CAROUSEL_IMG_PATH', SITE_URL.'images/carousel/');
     define('FACILITIES_IMG_PATH', SITE_URL.'images/facilities/');
     define('ROOMS_IMG_PATH', SITE_URL.'images/rooms/');
+    define('USERS_IMG_PATH', SITE_URL.'images/users/');
 
     // sendgrid API key
     define('SENDGRID_API_KEY', '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');

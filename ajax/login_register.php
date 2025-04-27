@@ -105,4 +105,52 @@
             echo json_encode(['status' => 'error', 'message' => 'Registration Failed!']);
         }
     }
+
+    if(isset($_POST['login'])){
+        $data = filteration($_POST);
+
+        // check user exists or not
+        $query = "SELECT * FROM `user_cred` WHERE (`email` = ? OR `phonenum` = ?) LIMIT 1";
+        $values = [
+            $data['email'], 
+            $data['password']
+        ];
+        $result = select($query, $values, 'ss');
+
+        if (mysqli_num_rows($result) == 0) {
+            echo json_encode(['status' => 'error', 'message' => 'Invalid Credentials!']);
+            exit;
+        }
+
+        $user = mysqli_fetch_assoc($result);
+
+        // check if user is blocked or not
+        if($user['status'] == 0){
+            echo json_encode(['status' => 'error', 'message' => 'Your account is blocked!']);
+            exit;
+        }
+
+        // check if user is verified or not
+        if($user['is_verified'] == 0){
+            echo json_encode(['status' => 'error', 'message' => 'Your account is not verified!']);
+            exit;
+        }
+        
+        // verify password
+        if(!password_verify($data['password'], $user['password'])){
+            echo json_encode(['status' => 'error', 'message' => 'Invalid Credentials!']);
+            exit;
+        }
+
+        // set session variables
+        session_start();
+        $_SESSION['USER_ID'] = $user['id'];
+        $_SESSION['USER_NAME'] = $user['name'];
+        $_SESSION['USER_EMAIL'] = $user['email'];
+        $_SESSION['USER_PHONE'] = $user['phonenum'];
+        $_SESSION['USER_PROFILE'] = $user['profile'];
+        $_SESSION['login'] = true;
+
+        echo json_encode(['status' => 'success', 'message' => 'Login Successful!']);
+    }
 ?>

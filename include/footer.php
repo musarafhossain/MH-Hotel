@@ -70,6 +70,51 @@
         xhr.send(formData);
     });
 
+    let login_form = document.getElementById('login-form');
+
+    login_form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Collect form values
+        let email = login_form.elements['email_mob'].value.trim();
+        let password = login_form.elements['password'].value.trim();
+
+        // Check if any required field is missing
+        if (!email || !password) {
+            showToast('danger', 'All fields are required!');
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append('email', email);
+        formData.append('password', password);
+        formData.append('login', true);
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'ajax/login_register.php', true);
+        xhr.onload = function() {
+            if (this.status == 200) {
+                try {
+                    // Attempt to parse the response as JSON
+                    let response = JSON.parse(this.responseText);
+
+                    // If the parsing is successful, handle the response
+                    if (response.status == 'success') {
+                        showToast('success', response.message);
+                        setTimeout(() => {
+                            window.location.href = window.location.href.split('?')[0];
+                        }, 1000);
+                    } else {
+                        showToast('danger', response.message);
+                    }
+                } catch (e) {
+                    showToast('danger', "An error occurred. Please try again.");
+                }
+            }
+        }
+        xhr.send(formData);
+    });
+
     setActive();
 </script>
 
