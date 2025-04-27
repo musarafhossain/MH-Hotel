@@ -9,7 +9,7 @@
 
         // check if the email and token are set
         if(!isset($email) || !isset($token)){
-            echo "Invalid request.";
+            echo "Invalid link.";
             exit;
         }
 
@@ -28,7 +28,7 @@
 
             // Update the user's email verification status and remove the token
             if($user['token'] != $token){
-                echo "Invalid token. Please check your email for the correct link.";
+                echo "Invalid link. Please check your email for the correct link.";
                 exit;
             }
             /* if($user['t_expire'] < date('Y-m-d H:i:s')){
@@ -44,7 +44,7 @@
             }
             //redirect('index.php');
         } else {
-            echo "Invalid or expired token. Please check your email for the correct link.";
+            echo "Invalid link. Please check your email for the correct link.";
             //redirect('index.php');
         }
     } else {
