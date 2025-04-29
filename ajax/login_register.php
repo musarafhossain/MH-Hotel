@@ -2,23 +2,38 @@
     require_once '../admin/db/db_config.php';
     require_once '../admin/include/essentials.php';
     require_once '../include/sendgrid/sendgrid-php.php';
+    date_default_timezone_set('Asia/Kolkata');
 
-    function sendMail($email, $name, $token) {
+    function sendMail($email, $token, $type) {
+        if($type == 'register'){
+            $subject = "Account Verification Link";
+            $page = "email_confirm.php";
+            $content = "
+                Click the link to confirm your email: <br>
+                <a href='".SITE_URL."$page?email_confirmation&email=$email&token=$token"."'>
+                    CLICK ME
+                </a>
+            ";
+        } else if($type == 'forgot'){
+            $subject = "Password Reset Link";
+            $page = "reset_password.php";
+            $content = "
+                Click the link to reset your password: <br>
+                <a href='".SITE_URL."$page?reset_password&email=$email&token=$token"."'>
+                    CLICK ME
+                </a>
+            ";
+        } else {
+            return 0;
+        }
         $emailObj = new \SendGrid\Mail\Mail(); 
         $emailObj->setFrom("musaraf.dev@gmail.com", "MH Hotel");
-        $emailObj->setSubject("Account Verification Link");
-    
-        // Use the actual email address here, not the Mail object
-        $emailObj->addTo($email, $name);
+        $emailObj->setSubject($subject);
+        $emailObj->addTo($email);
     
         $emailObj->addContent(
             "text/html", 
-            "
-             Click the link to confirm your email: <br>
-             <a href='".SITE_URL."email_confirm.php?email_confirmation&email=$email&token=$token"."'>
-                CLICK ME
-             </a>
-            "
+            $content
         );
     
         $sendgrid = new \SendGrid(SENDGRID_API_KEY);
@@ -76,7 +91,7 @@
 
         // send confirmation email to user
         $token = bin2hex(random_bytes(16));
-        if(!sendMail($data['email'], $data['name'], $token)){
+        if(!sendMail($data['email'], $token, "register")){
             echo json_encode(['status' => 'error', 'message' => 'Email Sending Failed!']);
             exit;
         }
@@ -152,5 +167,106 @@
         $_SESSION['login'] = true;
 
         echo json_encode(['status' => 'success', 'message' => 'Login Successful!']);
+    }
+
+    if(isset($_POST['forgot'])){
+        $data = filteration($_POST);
+
+        // check user exists or not
+        $query = "SELECT * FROM `user_cred` WHERE `email` = ? LIMIT 1";
+        $values = [
+            $data['email']
+        ];
+        $result = select($query, $values, 's');
+
+        if (mysqli_num_rows($result) == 0) {
+            echo json_encode(['status' => 'error', 'message' => 'Email not found!']);
+            exit;
+        }
+
+        $user = mysqli_fetch_assoc($result);
+
+        // check user is blocked or not
+        if($user['status'] == 0){
+            echo json_encode(['status' => 'error', 'message' => 'Your account is blocked!']);
+            exit;
+        }
+
+        // check if user is verified or not
+        if($user['is_verified'] == 0){
+            echo json_encode(['status' => 'error', 'message' => 'Your account is not verified!']);
+            exit;
+        }
+
+        // send confirmation email to user
+        $token = bin2hex(random_bytes(16));
+        if(!sendMail($data['email'], $token, 'forgot')){
+            echo json_encode(['status' => 'error', 'message' => 'Email Sending Failed!']);
+            exit;
+        }
+
+        // date and time for token expiry
+        $date = date('Y-m-d H:i:s', strtotime('+1 hour'));
+        $query = "UPDATE `user_cred` SET `token` = ?, `t_expire` = ? WHERE `id` = ?";
+        $values = [
+            $token, 
+            $date, 
+            $user['id']
+        ];
+
+        $result = update($query, $values, 'ssi');
+        if($result){
+            echo json_encode(['status' => 'success', 'message' => 'Password Reset Link Sent!']);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Failed to send password reset link!']);
+        }
+    }
+
+    if(isset($_POST['reset_password'])){
+        $data = filteration($_POST);
+
+        // check user exists or not
+        $query = "SELECT * FROM `user_cred` WHERE `email` = ? AND `token` = ? LIMIT 1";
+        $values = [
+            $data['email'], 
+            $data['token']
+        ];
+        $result = select($query, $values, 'ss');
+
+        if (mysqli_num_rows($result) == 0) {
+            echo json_encode(['status' => 'error', 'message' => 'Invalid or expired token!']);
+            exit;
+        }
+
+        $user = mysqli_fetch_assoc($result);
+
+        // check if user is blocked or not
+        if($user['status'] == 0){
+            echo json_encode(['status' => 'error', 'message' => 'Your account is blocked!']);
+            exit;
+        }
+
+        // check if user is verified or not
+        if($user['is_verified'] == 0){
+            echo json_encode(['status' => 'error', 'message' => 'Your account is not verified!']);
+            exit;
+        }
+
+        // encrypt password
+        $enc_pass = password_hash($data['password'], PASSWORD_BCRYPT);
+
+        // update password in database
+        $query = "UPDATE `user_cred` SET `password` = ?, `token` = NULL, `t_expire` = NULL WHERE `id` = ?";
+        $values = [
+            $enc_pass, 
+            $user['id']
+        ];
+
+        $result = update($query, $values, 'si');
+        if($result){
+            echo json_encode(['status' => 'success', 'message' => 'Password Reset Successful!']);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Password Reset Failed!']);
+        }
     }
 ?>

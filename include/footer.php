@@ -50,6 +50,8 @@
 
         let xhr = new XMLHttpRequest();
         xhr.open('POST', 'ajax/login_register.php', true);
+
+        // Set up a listener for the response
         xhr.onload = function() {
             if (this.status == 200) {
                 try {
@@ -59,6 +61,9 @@
                     // If the parsing is successful, handle the response
                     if (response.status == 'success') {
                         showToast('success', response.message);
+                        register_form.reset();
+                        // Close the modal after successful registration
+                        bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();
                     } else {
                         showToast('danger', response.message);
                     }
@@ -67,6 +72,12 @@
                 }
             }
         }
+        
+        // Set up a listener for network errors
+        xhr.onerror = function() {
+            showToast('danger', "An error occurred. Please try again.");
+        };
+        
         xhr.send(formData);
     });
 
@@ -112,6 +123,57 @@
                 }
             }
         }
+        xhr.send(formData);
+    });
+
+    let forgot_form = document.getElementById('forgot-form');
+
+    forgot_form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Collect form values
+        let email = forgot_form.elements['email'].value.trim();
+
+        // Check if any required field is missing
+        if (!email) {
+            showToast('danger', 'All fields are required!');
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append('email', email);
+        formData.append('forgot', true);
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'ajax/login_register.php', true);
+
+        // Set up a listener for the response
+        xhr.onload = function() {
+            if (this.status == 200) {
+                try {
+                    // Attempt to parse the response as JSON
+                    let response = JSON.parse(this.responseText);
+
+                    // If the parsing is successful, handle the response
+                    if (response.status == 'success') {
+                        showToast('success', response.message);
+                        forgot_form.reset();
+                        // Close the modal after successful password reset request
+                        bootstrap.Modal.getInstance(document.getElementById('forgotModal')).hide();
+                    } else {
+                        showToast('danger', response.message);
+                    }
+                } catch (e) {
+                    showToast('danger', "An error occurred. Please try again.");
+                }
+            }
+        }
+
+        // Set up a listener for network errors
+        xhr.onerror = function() {
+            showToast('danger', "An error occurred. Please try again.");
+        };
+
         xhr.send(formData);
     });
 

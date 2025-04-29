@@ -43,16 +43,18 @@
                         $path = USERS_IMG_PATH;
                         echo <<<HTML
                             <div class="btn-group">
-                                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    <img src="$path$_SESSION[USER_PROFILE]" alt="$_SESSION[USER_NAME]" class="rounded-circle me-1" width="30px" height="30px">
-                                    <span class="d-none d-lg-inline"> {$_SESSION['USER_NAME']}</span>
+                                <button type="button" class="btn shadow-none border-0 dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <img src="{$path}{$_SESSION['USER_PROFILE']}" alt="{$_SESSION['USER_NAME']}" class="rounded-circle me-1" width="30px" height="30px">
+                                    <span class="d-none d-lg-inline">{$_SESSION['USER_NAME']}</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-lg-end">
                                     <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                                     <li><a class="dropdown-item" href="bookings.php">Bookings</a></li>
                                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                </ul>
                             </div>
                         HTML;
+
                     } else {
                         echo <<<HTML
                             <!-- Button trigger modal -->
@@ -110,8 +112,9 @@
                     </div>
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <button type="submit" class="btn btn-dark shadow-none">LOGIN</button>
-                        <a href="javascript: void(0)" class="text-secondary text-decoration-none">Forgot
-                            Password?</a>
+                        <button type="button" class="btn text-secondary text-decoration-none shadow-none p-0 border-0" data-bs-toggle="modal" data-bs-target="#forgotModal" data-bs-dismiss="modal">
+                            Forgot Password?
+                        </button>
                     </div>
                 </div>
             </form>
@@ -235,8 +238,47 @@
 
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <button type="submit" class="btn btn-dark shadow-none">REGISTER</button>
-                        <a href="javascript: void(0)" class="text-secondary text-decoration-none">Already have an
-                            account?</a>
+                        <button type="button" class="btn border-0 shadow-none p-0 me-2 text-secondary text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">
+                            Already have an account?
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Forgot Modal -->
+<div class="modal fade" id="forgotModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="forgot-form" novalidate>
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 d-flex align-items-center">
+                        <i class="bi bi-person-circle fs-3 me-2"></i>
+                        Forgot Password
+                    </h1>
+                </div>
+                <div class="modal-body">
+                    <span class="badge rounded-pill text-bg-light text-dark mb-3 text-wrap lh-base">
+                        Note: A link will be sent to your email to reset your password!
+                    </span>
+                    <div class="mb-4">
+                        <label for="login-email" class="form-label">Email</label>
+                        <input 
+                            type="email" 
+                            class="form-control shadow-none" id="login-email" 
+                            autoComplete="username"
+                            required
+                            name="email"
+                        >
+                    </div>
+                    <div class="text-end mb-2">
+                        <button type="button" class="btn border-0 shadow-none p-0 me-2" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">
+                                CANCEL
+                        </button>
+                        <button type="submit" class="btn btn-dark shadow-none">SEND LINK</button>
                     </div>
                 </div>
             </form>
