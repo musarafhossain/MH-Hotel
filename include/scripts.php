@@ -42,4 +42,13 @@
     const bsToast = new bootstrap.Toast(toast, { delay: 3000 });
     bsToast.show();
   }
+
+  function checkLoginToBook(is_login, room_id){
+      if (is_login == 0) {
+        showToast('danger', 'Please login to book a room!');
+        return false;
+      } else {
+        window.location.href = `confirm_booking.php?id=${room_id}`;
+      }
+    }
 </script>

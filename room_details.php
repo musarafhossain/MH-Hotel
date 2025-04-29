@@ -163,10 +163,16 @@
                                 </div>
                             area;
 
+                            $login = 0;
+                            // ckeck login user
+                            if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+                                $login = 1;
+                            }
+
                             $is_shutdown = $settings_r['shutdown'];
                             $book_button = $is_shutdown
-                                ? '<button class="btn btn-sm btn-secondary shadow-none py-2 flex-fill w-50" disabled>Booking Disabled</button>'
-                                : '<a href="#" class="btn text-white custom-bg shadow-none py-3 w-50">Book Now</a>';
+                                ? '<button class="btn btn-sm btn-secondary shadow-none py-2 flex-fill" disabled>Booking Disabled</button>'
+                                : '<button onclick="checkLoginToBook(' . $login . ', ' . $room_data['sl_no'] . ');" class="btn btn-sm text-white custom-bg shadow-none py-2 flex-fill">Book Now</button>';
 
                             echo <<<book
                                 <div class="d-flex flex-md-row gap-2">

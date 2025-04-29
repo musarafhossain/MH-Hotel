@@ -111,10 +111,16 @@
                             $room_thumb = ROOMS_IMG_PATH.$thumb_res['image'];
                         }
 
+                        $login = 0;
+                        // ckeck login user
+                        if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+                            $login = 1;
+                        }
+
                         $is_shutdown = $settings_r['shutdown'];
                         $book_button = $is_shutdown
                             ? '<button class="btn btn-sm btn-secondary shadow-none py-2 flex-fill" disabled>Booking Disabled</button>'
-                            : '<a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 flex-fill">Book Now</a>';
+                            : '<button onclick="checkLoginToBook(' . $login . ', ' . $room_row['sl_no'] . ');" class="btn btn-sm text-white custom-bg shadow-none py-2 flex-fill">Book Now</button>';
 
                         //print room card
                         echo <<<data
