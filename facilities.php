@@ -24,7 +24,7 @@
     <div class="my-5 px-4">
         <h2 class="fw-bold h-font text-center">OUR FACILITIES</h2>
         <div class="h-line bg-dark"></div>
-        <<p class="text-center mt-3 mx-auto" style="max-width: 700px;">
+        <p class="text-center mt-3 mx-auto" style="max-width: 700px;">
             <?php echo $settings_r['site_about'] ?>
         </p>
     </div>

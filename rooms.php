@@ -111,6 +111,11 @@
                             $room_thumb = ROOMS_IMG_PATH.$thumb_res['image'];
                         }
 
+                        $is_shutdown = $settings_r['shutdown'];
+                        $book_button = $is_shutdown
+                            ? '<button class="btn btn-sm btn-secondary shadow-none py-2 flex-fill" disabled>Booking Disabled</button>'
+                            : '<a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 flex-fill">Book Now</a>';
+
                         //print room card
                         echo <<<data
                             <div class="card mb-4 border p-3">
@@ -143,7 +148,7 @@
                                     <div class="col-12 col-md-2 text-md-center text-start mt-md-0 mt-lg-0 mt-2">
                                         <h5 class="mb-4">₹$room_row[price] per night</h5>
                                         <div class="d-flex flex-md-column flex-row gap-2">
-                                            <a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 flex-fill">Book Now</a>
+                                            $book_button
                                             <a href="room_details.php?id=$room_row[sl_no]" class="btn btn-sm btn-outline-dark shadow-none py-2 flex-fill">More details</a>
                                         </div>                            
                                     </div>

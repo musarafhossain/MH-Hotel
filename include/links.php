@@ -14,5 +14,23 @@
 <!-- AOS Link -->
 <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
 <?php
-session_start();
+    session_start();
+    include_once('admin/db/db_config.php');
+    include_once('admin/include/essentials.php');
+
+    $settings_r = mysqli_fetch_assoc(select(
+        "SELECT * FROM `settings` WHERE `sl_no` = ?",
+        array(1),
+        "i"
+    ));
+
+    if($settings_r['shutdown']){
+        echo<<<ALERTBAR
+            <div class='bg-danger text-center py-2'>
+                <i class='bi bi-exclamation-triangle-fill'></i> 
+                <span class='text-white'>This website is currently under maintenance. Please check back later.</span>
+                <i class='bi bi-exclamation-triangle-fill'></i>
+            </div>
+        ALERTBAR;
+    }
 ?>

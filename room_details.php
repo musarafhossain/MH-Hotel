@@ -163,9 +163,14 @@
                                 </div>
                             area;
 
+                            $is_shutdown = $settings_r['shutdown'];
+                            $book_button = $is_shutdown
+                                ? '<button class="btn btn-sm btn-secondary shadow-none py-2 flex-fill w-50" disabled>Booking Disabled</button>'
+                                : '<a href="#" class="btn text-white custom-bg shadow-none py-3 w-50">Book Now</a>';
+
                             echo <<<book
                                 <div class="d-flex flex-md-row gap-2">
-                                    <a href="#" class="btn text-white custom-bg shadow-none py-3 w-50">Book Now</a>
+                                    $book_button
                                     <a href="rooms.php" class="btn  btn-outline-dark shadow-none py-3 w-50"><<< Back</a>
                                 </div>
                             book;

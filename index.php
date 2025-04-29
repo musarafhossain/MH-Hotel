@@ -220,6 +220,11 @@
                     $room_thumb = ROOMS_IMG_PATH . $thumb_res['image'];
                 }
 
+                $is_shutdown = $settings_r['shutdown'];
+                $book_button = $is_shutdown
+                    ? '<button class="btn btn-sm btn-secondary shadow-none py-2 flex-fill" disabled>Booking Disabled</button>'
+                    : '<a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 flex-fill">Book Now</a>';
+
                 // Room Card
                 echo <<<data
                     <div class="col-lg-4 col-md-6 my-3">
@@ -260,7 +265,7 @@
                                     </span>
                                 </div>
                                 <div class="d-flex gap-2">
-                                    <a href="#" class="btn btn-sm text-white custom-bg shadow-none py-2 flex-fill">Book Now</a>
+                                    $book_button
                                     <a href="room_details.php?id={$room_row['sl_no']}" class="btn btn-sm btn-outline-dark shadow-none py-2 flex-fill">More details</a>
                                 </div>
                             </div>
