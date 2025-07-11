@@ -4,7 +4,7 @@
 
     session_start();
     if((isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] == true)){
-        redirect('dashboard.php');
+        redirect('admin/dashboard.php');
     }
 ?>
 
